@@ -1,0 +1,16 @@
+Flask
+flask-cors
+numpy
+tensorflow
+opencv-python
+werkzeug
+openai
+joblib
+pandas
+requests
+Pillow
+librosa
+pydub
+matplotlib
+python-dotenv
+scikit-learn
