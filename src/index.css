@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 1.2s ease-out forwards;
+  }
+  .btn-primary {
+    @apply bg-white text-blue-700 font-semibold px-6 py-3 rounded-full shadow hover:bg-blue-100 transition;
+  }
+  
+  .nav-link {
+    @apply text-gray-700 hover:text-blue-600 font-medium dark:text-gray-300 dark:hover:text-cyan-300;
+  }
+  
+  .dark {
+    transition: background-color 0.5s, color 0.5s;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  
+  

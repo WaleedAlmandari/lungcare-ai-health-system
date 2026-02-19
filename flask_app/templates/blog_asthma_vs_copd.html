@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Difference Between Asthma and COPD | Lung Care</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      font-family: 'Roboto', sans-serif;
+    }
+    .prose a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .prose a:hover {
+      text-decoration: underline;
+    }
+    .image-card {
+      transition: transform 0.3s ease;
+    }
+    .image-card:hover {
+      transform: scale(1.01);
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    .article-content p {
+      margin-bottom: 1.25rem;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-left: 4px solid #3b82f6;
+    }
+  </style>
+</head>
+<body class="text-gray-800 bg-gray-50">
+
+  <!-- Chatbot Widget (Small Box, Left Bottom Corner, Clean Border & Shadow) -->
+<div id="chatbot-widget" style="
+  position: fixed;
+  bottom: 20px;
+  left:-20px;
+  width: 300px;
+  height: 420px;
+  z-index: 9999;
+  border-radius: 0px;
+  overflow: hidden;
+  background-color:transparent;
+">
+  <iframe
+    src="http://localhost:3000/chatbot-widget"
+    width="100%"
+    height="100%"
+    frameborder="0"
+    style="border: none;"
+  ></iframe>
+</div>
+
+<!-- Navigation -->
+<nav class="bg-gradient-to-r from-blue-600 to-blue-800 text-white w-full py-3 shadow-lg sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+    <a href="http://localhost:3000/" class="text-xl font-bold flex items-center">
+      <i class="fas fa-lungs mr-2"></i> LungCare
+    </a>
+    
+    <div class="hidden md:flex space-x-6">
+      <!-- Home Link -->
+      <a href="http://localhost:3000/" class="hover:text-blue-200 transition flex items-center">
+        Home
+      </a>
+      
+      <!-- Articles Dropdown -->
+      <div class="relative group">
+        <button class="hover:text-blue-200 transition flex items-center">
+          Articles <i class="fas fa-chevron-down ml-1 text-xs"></i>
+        </button>
+        <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-1 w-64 z-50">
+          <a href="http://127.0.0.1:5000/blog/air-pollution" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">How Air Pollution Affects Your Lungs</a>
+          <a href="http://127.0.0.1:5000/blog/asthma-vs-copd" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Difference Between Asthma and COPD</a>
+          <a href="http://127.0.0.1:5000/blog/lung-function" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Foods That Improve Lung Function</a>
+          <a href="http://127.0.0.1:5000/blog/smoking-impact" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">The Impact of Smoking on Young Adults</a>
+          <a href="http://127.0.0.1:5000/blog/breathing-exercises" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Breathing Exercises for Better Lung Capacity</a>
+          <a href="http://127.0.0.1:5000/blog/long-covid" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Understanding Long COVID and Lung Recovery</a>
+        </div>
+      </div>
+      
+      <!-- Diseases Dropdown -->
+      <div class="relative group">
+        <button class="hover:text-blue-200 transition flex items-center">
+          Diseases <i class="fas fa-chevron-down ml-1 text-xs"></i>
+        </button>
+        <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-1 w-64 z-50">
+          <a href="http://localhost:5000/diseases/pneumonia" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Pneumonia</a>
+          <a href="http://localhost:5000/diseases/lung-cancer" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Lung Cancer</a>
+          <a href="http://localhost:5000/diseases/asthma" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Asthma</a>
+          <a href="http://localhost:5000/diseases/pulmonary-fibrosis" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Pulmonary Fibrosis</a>
+          <a href="http://localhost:5000/diseases/copd" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">COPD</a>
+          <a href="http://localhost:5000/diseases/covid-19" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">COVID-19</a>
+        </div>
+      </div>
+      
+      <!-- AI Tools Dropdown -->
+      <div class="relative group">
+        <button class="hover:text-blue-200 transition flex items-center">
+          AI Tools <i class="fas fa-chevron-down ml-1 text-xs"></i>
+        </button>
+        <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-1 w-64 z-50">
+          <a href="http://localhost:3000/xray" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">X-ray Pneumonia Detection</a>
+          <a href="http://localhost:3000/lung-cancer-predictor" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Lung Cancer Risk</a>
+          <a href="http://localhost:3000/symptom-checker" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Symptom Checker</a>
+          <a href="http://localhost:3000/air-quality" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Air Quality Checker</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu button -->
+    <button class="md:hidden text-xl">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- Blog Content -->
+<main class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+  <article class="prose lg:prose-xl">
+    <!-- Article Header -->
+    <header class="mb-12 text-center">
+      <div class="inline-block px-4 py-2 mb-4 text-sm font-semibold text-teal-700 bg-teal-100 rounded-full uppercase tracking-wider">
+        RESPIRATORY HEALTH
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+        Understanding the Key Differences Between <span class="text-teal-600">Asthma and COPD</span>
+      </h1>
+      <div class="flex justify-center items-center text-gray-500 text-sm">
+        <span class="mr-4"><i class="far fa-calendar-alt mr-1"></i> August 15, 2023</span>
+        <span><i class="far fa-clock mr-1"></i> 8 min read</span>
+      </div>
+    </header>
+
+    <!-- Featured Image -->
+    <div class="image-card my-8 rounded-xl overflow-hidden shadow-xl">
+      <img src="/static/asthma-copd.jpg" 
+           alt="Comparison of asthma and COPD conditions"
+           class="w-full h-64 md:h-96 object-cover">
+      <p class="text-center text-sm text-gray-500 mt-2 italic">While asthma and COPD share some symptoms, they are distinct conditions with different causes and treatments</p>
+    </div>
+
+    <!-- Article Content -->
+    <div class="article-content">
+      <section>
+        <div class="highlight-box rounded-r-lg pl-6 pr-4 py-4 mb-8">
+          <p class="text-lg md:text-xl font-medium text-gray-700">
+            Asthma and COPD (Chronic Obstructive Pulmonary Disease) are often confused due to similar symptoms like wheezing and shortness of breath. However, they are fundamentally different conditions with distinct causes, progression patterns, and treatment approaches. Accurate diagnosis is crucial as up to 20% of patients may have both conditions simultaneously (ACOS - Asthma-COPD Overlap Syndrome).
+          </p>
+        </div>
+        
+        <p>Both asthma and COPD cause airway obstruction and breathing difficulties, but asthma is typically reversible while COPD is progressive. Asthma often begins in childhood and is linked to allergies, while COPD primarily affects adults with a history of smoking or long-term exposure to lung irritants. Understanding these differences helps ensure proper management and treatment.</p>
+      </section>
+
+      <section class="mt-10">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+          <i class="fas fa-clipboard-list text-teal-500 mr-2"></i> Key Differences at a Glance
+        </h2>
+        
+        <p>This comparison table highlights the fundamental distinctions between these respiratory conditions:</p>
+        
+        <div class="grid md:grid-cols-2 gap-4 my-6">
+          <div class="bg-white p-4 rounded-lg shadow-md border-t-4 border-teal-500">
+            <h3 class="font-semibold text-teal-600 flex items-center">
+              <i class="fas fa-allergies mr-2"></i> Asthma Characteristics
+            </h3>
+            <ul class="text-gray-600 mt-2 space-y-1">
+              <li class="flex items-start"><i class="fas fa-check-circle text-teal-400 mr-2 mt-1 text-xs"></i> Typically begins in childhood</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-teal-400 mr-2 mt-1 text-xs"></i> Symptoms come and go (episodic)</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-teal-400 mr-2 mt-1 text-xs"></i> Airway obstruction is usually reversible</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-teal-400 mr-2 mt-1 text-xs"></i> Strong association with allergies</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-teal-400 mr-2 mt-1 text-xs"></i> Normal lung function between attacks</li>
+            </ul>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-md border-t-4 border-blue-500">
+            <h3 class="font-semibold text-blue-600 flex items-center">
+              <i class="fas fa-smoking mr-2"></i> COPD Characteristics
+            </h3>
+            <ul class="text-gray-600 mt-2 space-y-1">
+              <li class="flex items-start"><i class="fas fa-check-circle text-blue-400 mr-2 mt-1 text-xs"></i> Usually develops after age 40</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-blue-400 mr-2 mt-1 text-xs"></i> Symptoms are persistent (chronic)</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-blue-400 mr-2 mt-1 text-xs"></i> Airway obstruction is irreversible</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-blue-400 mr-2 mt-1 text-xs"></i> Strong link to smoking/air pollution</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-blue-400 mr-2 mt-1 text-xs"></i> Progressive decline in lung function</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          <i class="fas fa-microscope text-teal-500 mr-2"></i> Underlying Causes and Mechanisms
+        </h2>
+        
+        <p>While both conditions affect breathing, their biological mechanisms differ significantly:</p>
+        
+        <div class="grid md:grid-cols-2 gap-6 mt-8">
+          <div class="bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-xl shadow-md border-l-4 border-teal-500 transition duration-300 hover:shadow-lg">
+            <h3 class="font-semibold text-teal-700 text-xl flex items-center">
+              <i class="fas fa-lungs-virus mr-2"></i> Asthma Pathology
+            </h3>
+            <p class="mt-3 text-gray-700">Asthma involves chronic airway inflammation with distinct immune system involvement:</p>
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-start">
+                <span class="bg-teal-100 text-teal-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700">Type 2 inflammation driven by eosinophils</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-teal-100 text-teal-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700">Airway hyperresponsiveness to triggers</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-teal-100 text-teal-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700">Mucus production but no structural damage</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-teal-100 text-teal-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700">Often associated with other atopic conditions</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-md border-l-4 border-blue-500 transition duration-300 hover:shadow-lg">
+            <h3 class="font-semibold text-blue-700 text-xl flex items-center">
+              <i class="fas fa-lungs mr-2"></i> COPD Pathology
+            </h3>
+            <p class="mt-3 text-gray-700">COPD involves progressive, irreversible lung damage with distinct features:</p>
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-start">
+                <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700">Neutrophil-dominated inflammation</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700">Structural changes (emphysema, bronchiolitis)</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700">Destruction of alveoli and small airways</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700">Systemic effects beyond the lungs</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          <i class="fas fa-stethoscope text-teal-500 mr-2"></i> Diagnosis and Testing
+        </h2>
+        
+        <p>Differentiating between asthma and COPD requires comprehensive evaluation:</p>
+        
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl shadow-inner border border-purple-200 mt-6">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="font-semibold text-purple-700 text-lg flex items-center mb-3">
+                <i class="fas fa-vial text-purple-600 mr-2"></i> Asthma Diagnosis
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <span class="bg-white text-purple-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>Spirometry with bronchodilator:</strong> Shows reversible obstruction (≥12% improvement)</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-white text-purple-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>FeNO test:</strong> Measures exhaled nitric oxide (marker of inflammation)</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-white text-purple-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>Methacholine challenge:</strong> Tests airway hyperresponsiveness</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-white text-purple-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>Allergy testing:</strong> Identifies potential triggers</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-purple-700 text-lg flex items-center mb-3">
+                <i class="fas fa-x-ray text-purple-600 mr-2"></i> COPD Diagnosis
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <span class="bg-white text-purple-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>Spirometry:</strong> Shows irreversible obstruction (FEV1/FVC < 0.7 post-bronchodilator)</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-white text-purple-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>CT scan:</strong> Reveals emphysema or airway thickening</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-white text-purple-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>DLCO test:</strong> Measures gas exchange efficiency</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-white text-purple-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>6-minute walk test:</strong> Assesses functional capacity</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="mt-6 p-4 bg-white bg-opacity-70 rounded-lg">
+            <h4 class="font-semibold text-purple-700 flex items-center">
+              <i class="fas fa-exclamation-circle mr-2"></i> Overlap Syndrome (ACOS)
+            </h4>
+            <p class="text-gray-700 mt-2">When features of both conditions are present, diagnosis requires careful evaluation of symptom patterns, smoking history, and comprehensive lung function tests. ACOS patients often experience worse outcomes than either condition alone.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          <i class="fas fa-pills text-teal-500 mr-2"></i> Treatment Approaches
+        </h2>
+        
+        <p>While some medications overlap, treatment strategies differ significantly:</p>
+        
+        <div class="grid md:grid-cols-3 gap-5 mt-6">
+          <div class="stat-card bg-white p-5 rounded-xl shadow-md text-center transition duration-300 hover:shadow-lg">
+            <div class="text-4xl font-bold text-teal-600 mb-2">Asthma</div>
+            <ul class="text-gray-600 text-sm space-y-2 mt-3">
+              <li>Inhaled corticosteroids (mainstay)</li>
+              <li>Short-acting beta agonists (rescue)</li>
+              <li>Leukotriene modifiers</li>
+              <li>Biologics for severe cases</li>
+              <li>Allergen avoidance</li>
+            </ul>
+            <div class="mt-3 h-1 bg-gradient-to-r from-teal-100 to-teal-300 rounded-full"></div>
+          </div>
+          <div class="stat-card bg-white p-5 rounded-xl shadow-md text-center transition duration-300 hover:shadow-lg">
+            <div class="text-4xl font-bold text-teal-600 mb-2">COPD</div>
+            <ul class="text-gray-600 text-sm space-y-2 mt-3">
+              <li>Long-acting bronchodilators</li>
+              <li>Combination inhalers</li>
+              <li>Pulmonary rehabilitation</li>
+              <li>Oxygen therapy (advanced cases)</li>
+              <li>Smoking cessation essential</li>
+            </ul>
+            <div class="mt-3 h-1 bg-gradient-to-r from-teal-100 to-teal-300 rounded-full"></div>
+          </div>
+          <div class="stat-card bg-white p-5 rounded-xl shadow-md text-center transition duration-300 hover:shadow-lg">
+            <div class="text-4xl font-bold text-teal-600 mb-2">ACOS</div>
+            <ul class="text-gray-600 text-sm space-y-2 mt-3">
+              <li>Combination of both approaches</li>
+              <li>Higher dose inhaled steroids</li>
+              <li>Long-acting bronchodilators</li>
+              <li>Close monitoring required</li>
+              <li>Individualized treatment plans</li>
+            </ul>
+            <div class="mt-3 h-1 bg-gradient-to-r from-teal-100 to-teal-300 rounded-full"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          <i class="fas fa-chart-line text-teal-500 mr-2"></i> Prognosis and Long-Term Outlook
+        </h2>
+        
+        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-1/2">
+              <h3 class="font-semibold text-teal-700 text-lg mb-3">Asthma Outlook</h3>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>Most patients achieve good control with treatment</li>
+                <li>Quality of life can be excellent with proper management</li>
+                <li>Severe asthma affects about 5-10% of patients</li>
+                <li>Mortality is rare but possible in severe attacks</li>
+                <li>Children may outgrow symptoms (about 30-50% of cases)</li>
+              </ul>
+            </div>
+            <div class="md:w-1/2">
+              <h3 class="font-semibold text-teal-700 text-lg mb-3">COPD Outlook</h3>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>Progressive decline in lung function</li>
+                <li>Smoking cessation slows progression</li>
+                <li>Frequent exacerbations worsen prognosis</li>
+                <li>5-year mortality ranges from 40-70% in severe cases</li>
+                <li>Fourth leading cause of death worldwide</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="mt-6 bg-blue-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-blue-700 flex items-center">
+              <i class="fas fa-lightbulb mr-2"></i> Key Management Strategies
+            </h4>
+            <p class="text-gray-700 mt-2 text-sm">For both conditions: vaccination (flu/pneumonia), regular exercise within capacity, avoiding triggers (smoke/pollution/allergens), and consistent medication adherence improve outcomes. Pulmonary rehabilitation benefits both conditions but is especially crucial for COPD.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12 bg-blue-50 p-6 rounded-xl border border-blue-200">
+        <h2 class="text-xl font-bold text-blue-800 mb-3">
+          <i class="fas fa-book-open text-blue-600 mr-2"></i> Further Resources
+        </h2>
+        <ul class="space-y-3">
+          <li>
+            <a href="https://www.lung.org/lung-health-diseases/lung-disease-lookup/asthma/learn-about-asthma" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-blue-600 hover:text-blue-800 hover:underline flex items-start">
+              <span class="bg-blue-100 text-blue-600 rounded p-1 mr-3">
+                <i class="fas fa-external-link-alt text-sm"></i>
+              </span>
+              <span>
+                <strong>American Lung Association: Asthma Information</strong> - Comprehensive asthma resources
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.nhlbi.nih.gov/health-topics/copd" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-blue-600 hover:text-blue-800 hover:underline flex items-start">
+              <span class="bg-blue-100 text-blue-600 rounded p-1 mr-3">
+                <i class="fas fa-external-link-alt text-sm"></i>
+              </span>
+              <span>
+                <strong>NIH: COPD Information</strong> - Authoritative COPD guidelines
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="https://goldcopd.org/" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-blue-600 hover:text-blue-800 hover:underline flex items-start">
+              <span class="bg-blue-100 text-blue-600 rounded p-1 mr-3">
+                <i class="fas fa-external-link-alt text-sm"></i>
+              </span>
+              <span>
+                <strong>GOLD COPD Guidelines</strong> - Global standards for COPD care
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+          <i class="fas fa-question-circle text-indigo-600 mr-2"></i> Frequently Asked Questions
+        </h2>
+        
+        <div class="space-y-4">
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-gray-800 flex items-center">
+              <i class="fas fa-question text-indigo-500 mr-2"></i> Can asthma turn into COPD?
+            </h4>
+            <p class="text-gray-700 mt-2 text-sm">No, asthma doesn't "turn into" COPD as they are distinct conditions. However, long-term uncontrolled asthma with chronic airway remodeling can lead to fixed airflow obstruction that resembles COPD (sometimes called "asthma-COPD overlap"). Smoking with asthma dramatically increases this risk.</p>
+          </div>
+          
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-gray-800 flex items-center">
+              <i class="fas fa-question text-indigo-500 mr-2"></i> Which is more serious - asthma or COPD?
+            </h4>
+            <p class="text-gray-700 mt-2 text-sm">COPD is generally more progressive and life-limiting, with higher mortality rates. However, severe asthma attacks can be immediately life-threatening. Well-controlled asthma typically has better long-term outcomes than COPD, which involves irreversible lung damage.</p>
+          </div>
+          
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-gray-800 flex items-center">
+              <i class="fas fa-question text-indigo-500 mr-2"></i> Can you have both asthma and COPD?
+            </h4>
+            <p class="text-gray-700 mt-2 text-sm">Yes, this is called Asthma-COPD Overlap Syndrome (ACOS). It's estimated 15-20% of obstructive airway disease patients have features of both. These patients often experience more symptoms and exacerbations than either condition alone, requiring combined treatment approaches.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mt-12 pt-8 border-t border-gray-200">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="flex space-x-4 mb-4 md:mb-0">
+            <span class="text-sm font-medium text-gray-500">Share this article:</span>
+            <a href="https://twitter.com/intent/tweet?url=http://127.0.0.1:5000/blog/asthma-copd&text=Understanding%20the%20key%20differences%20between%20asthma%20and%20COPD" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-blue-400 hover:text-blue-600 transition" 
+               title="Share on Twitter">
+              <i class="fab fa-twitter text-lg"></i>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:5000/blog/asthma-copd" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-blue-600 hover:text-blue-800 transition" 
+               title="Share on Facebook">
+              <i class="fab fa-facebook-f text-lg"></i>
+            </a>
+            <a href="https://pinterest.com/pin/create/button/?url=http://127.0.0.1:5000/blog/asthma-copd&media=&description=Understanding%20the%20Key%20Differences%20Between%20Asthma%20and%20COPD" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-red-500 hover:text-red-700 transition" 
+               title="Share on Pinterest">
+              <i class="fab fa-pinterest-p text-lg"></i>
+            </a>
+          </div>
+          <a href="http://localhost:3000/#blog" class="text-blue-600 font-medium inline-flex items-center hover:text-blue-800 transition">
+            <i class="fas fa-arrow-left mr-2"></i> Back to All Articles
+          </a>
+        </div>
+        <div class="mt-6 text-center text-sm text-gray-500">
+          <p>© 2023 LungCare. All rights reserved. | Medical review by Dr. Michael Chen, Pulmonologist</p>
+        </div>
+      </footer>
+    </div>
+  </article>
+</main>
+
+<!-- Footer -->
+<!-- Footer -->
+  <footer class="bg-blue-700 text-white py-2 mt-8">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <h3 class="text-md font-semibold mb-3">Lung Care</h3>
+          <p class="text-blue-100 text-sm">Providing reliable information about lung health and respiratory diseases.</p>
+        </div>
+        <div>
+          <h3 class="text-md font-semibold mb-3">Quick Links</h3>
+          <ul class="space-y-1 text-sm">
+            <li><a href="http://localhost:3000/" class="text-blue-100 hover:text-white transition-colors">Home</a></li>
+            <li><a href="/diseases/pneumonia" class="text-blue-100 hover:text-white transition-colors">Pneumonia</a></li>
+            <li><a href="/diseases/asthma" class="text-blue-100 hover:text-white transition-colors">Asthma</a></li>
+            <li><a href="/diseases/copd" class="text-blue-100 hover:text-white transition-colors">COPD</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-md font-semibold mb-3">Contact</h3>
+          <p class="text-blue-100 text-sm">For medical emergencies, call your local emergency number immediately.</p>
+        </div>
+      </div>
+      <div class="border-t border-blue-600 mt-6 pt-4 text-center text-blue-100 text-sm">
+        <p>© 2025 Lung Care. All information is for educational purposes only.</p>
+      </div>
+    </div>
+  </footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  // Back to top button functionality
+  const backToTopButton = document.getElementById('backToTop');
+  
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.remove('opacity-0', 'invisible');
+      backToTopButton.classList.add('opacity-100', 'visible');
+    } else {
+      backToTopButton.classList.remove('opacity-100', 'visible');
+      backToTopButton.classList.add('opacity-0', 'invisible');
+    }
+  });
+  
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+</body>
+</html>

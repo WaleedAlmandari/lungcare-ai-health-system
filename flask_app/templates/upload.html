@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload X-ray</title>
+</head>
+<body>
+  <h2>Upload Chest X-ray</h2>
+  <form action="/predict" method="post" enctype="multipart/form-data">
+    <input type="file" name="xray" accept="image/*" required>
+    <button type="submit">Upload & Diagnose</button>
+  </form>
+</body>
+</html>

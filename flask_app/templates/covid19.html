@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <title>COVID-19 - Lung Care</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <!-- Add Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f9fafb;
+      line-height: 1.6;
+      font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .prose h2 {
+      color: #1d4ed8;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+    }
+
+    .emoji {
+      margin-right: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      transition: all 0.3s ease;
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.375rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: white !important;
+      display: flex;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .active-nav {
+      background-color: rgba(255, 255, 255, 0.3);
+      font-weight: 600;
+    }
+
+    .symptom-card {
+      transition: all 0.3s ease;
+      border-left: 4px solid #1d4ed8;
+    }
+
+    .symptom-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background-color: #1d4ed8;
+      color: white;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      font-size: 0.875rem;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      background-color: #1e40af;
+    }
+    
+    /* Improved typography */
+    .text-gray-700 {
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    
+    .prose-lg p {
+      font-size: 1.125rem;
+    }
+    
+    .text-lg {
+      font-size: 1.125rem;
+      line-height: 1.75;
+    }
+    
+    h1 {
+      letter-spacing: -0.05em;
+      line-height: 1.2;
+    }
+
+    /* Hero section */
+.hero {
+  background: linear-gradient(to right, #e0f2fe, #f8fafc);
+  padding: 2rem 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+/* Image container */
+.image-card {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+.image-card:hover {
+  transform: translateY(-6px);
+}
+
+.image-card img {
+  max-width: 480px;
+}
+
+/* COVID-specific styling */
+.covid-alert {
+  background-color: #fef3c7;
+  border-left: 4px solid #f59e0b;
+}
+.covid-warning {
+  background-color: #fee2e2;
+  border-left: 4px solid #ef4444;
+}
+  </style>
+</head>
+<body class="text-gray-800 font-sans">
+
+  <!-- Chatbot Widget (Small Box, Left Bottom Corner, Clean Border & Shadow) -->
+<div id="chatbot-widget" style="
+  position: fixed;
+  bottom: 20px;
+  left:-20px;
+  width: 300px;
+  height: 420px;
+  z-index: 9999;
+  border-radius: 0px;
+  overflow: hidden;
+  background-color:transparent;
+">
+  <iframe
+    src="http://localhost:3000/chatbot-widget"
+    width="100%"
+    height="100%"
+    frameborder="0"
+    style="border: none;"
+  ></iframe>
+</div>
+
+<!-- 🔷 Navigation -->
+<nav class="bg-blue-700 text-white w-full py-2 shadow-md sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 h-14">
+    <!-- Logo -->
+    <a href="http://localhost:3000/" class="flex items-center gap-2 text-white text-lg font-bold">
+      <i class="fas fa-lungs text-white text-xl"></i>
+      <span class="font-bold">Lung Care</span>
+    </a>
+
+    <!-- Links -->
+<ul class="flex items-center gap-6 text-base font-medium">
+  <li>
+    <a href="http://localhost:3000" class="nav-link flex items-center">
+      <i class="fas fa-home mr-1"></i>Home
+    </a>
+  </li>
+  <li><a href="/diseases/pneumonia" class="nav-link">Pneumonia</a></li>
+  <li><a href="/diseases/asthma" class="nav-link">Asthma</a></li>
+  <li><a href="/diseases/copd" class="nav-link">COPD</a></li>
+  <li><a href="/diseases/lung-cancer" class="nav-link">Lung Cancer</a></li>
+  <li><a href="/diseases/pulmonary-fibrosis" class="nav-link">Pulmonary Fibrosis</a></li>
+  <li><a href="/diseases/covid-19" class="nav-link active-nav">COVID-19</a></li>
+</ul>
+</div>
+</nav>
+
+  <!-- 📖 Content -->
+  <main class="max-w-5xl mx-auto px-6 py-8">
+  <div class="hero text-center" data-aos="fade-down">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-blue-700 mb-4 flex justify-center items-center gap-2">
+      <i class="fas fa-virus text-blue-600 text-3xl md:text-4xl"></i> COVID-19
+    </h1>
+    <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+      Understanding COVID-19: Symptoms, prevention, and treatment of this respiratory illness caused by SARS-CoV-2.
+    </p>
+  </div>
+
+ <!-- ✅ Image with centered title -->
+<div class="image-card mt-10 mb-6" data-aos="zoom-in">
+  <div class="flex flex-col items-center">
+    <h2 class="text-xl font-semibold text-gray-700 mb-4 text-center">
+      How COVID-19 Affects the Respiratory System
+    </h2>
+    <img src="{{ url_for('static', filename='covid-19.jpg') }}"
+         alt="COVID-19 Diagram"
+         class="rounded-xl w-full max-w-xl shadow-lg border-4 border-white" />
+  </div>
+</div>
+
+
+  <article class="prose lg:prose-lg mt-8" data-aos="fade-up">
+    <section>
+        <h2><span class="emoji">🧬</span> Introduction</h2>
+        <p class="text-gray-700">
+          COVID-19 is an infectious disease caused by the SARS-CoV-2 virus. First identified in December 2019, it primarily spreads through respiratory droplets when an infected person coughs, sneezes, or talks. 
+          While many experience mild to moderate symptoms, COVID-19 can cause severe respiratory illness, especially in older adults and those with underlying medical conditions.
+        </p>
+        <div class="covid-alert p-4 rounded-lg mt-4">
+          <p class="text-amber-800 font-medium"><i class="fas fa-exclamation-circle mr-2"></i>Note: COVID-19 information evolves rapidly. Consult official health sources for the latest guidance.</p>
+        </div>
+      </section>
+
+      <section class="mt-8">
+        <h2><span class="emoji">🫁</span> How It Affects the Lungs</h2>
+        <p class="text-gray-700">
+          COVID-19 primarily targets the respiratory system, causing:
+          <ul class="list-disc pl-5 mt-2 text-gray-700">
+            <li>Inflammation of lung tissue (pneumonia)</li>
+            <li>Damage to alveoli (air sacs) reducing oxygen exchange</li>
+            <li>Acute Respiratory Distress Syndrome (ARDS) in severe cases</li>
+            <li>Blood clotting issues affecting lung function</li>
+            <li>Potential long-term lung damage ("long COVID")</li>
+          </ul>
+        </p>
+        <div class="bg-blue-50 p-4 rounded-lg mt-4 border-l-4 border-blue-500">
+          <p class="text-blue-800 font-medium"><i class="fas fa-info-circle mr-2"></i>Did you know? As of 2023, COVID-19 has caused over 6.9 million deaths worldwide, with hundreds of millions of confirmed cases.</p>
+        </div>
+      </section>
+
+      <section class="mt-8">
+        <h2><span class="emoji">🔵</span> Symptoms</h2>
+        <div class="grid md:grid-cols-2 gap-4 mt-6">
+          <div class="symptom-card bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-temperature-high mr-2"></i>Fever/Chills</h3>
+            <p class="text-gray-700">Temperature ≥100.4°F (38°C)</p>
+          </div>
+          <div class="symptom-card bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-cough mr-2"></i>Cough</h3>
+            <p class="text-gray-700">Persistent dry cough</p>
+          </div>
+          <div class="symptom-card bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-wind mr-2"></i>Shortness of Breath</h3>
+            <p class="text-gray-700">Difficulty breathing</p>
+          </div>
+          <div class="symptom-card bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-tired mr-2"></i>Fatigue</h3>
+            <p class="text-gray-700">Extreme tiredness</p>
+          </div>
+          <div class="symptom-card bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-utensils mr-2"></i>Loss of Taste/Smell</h3>
+            <p class="text-gray-700">Sudden onset (anosmia)</p>
+          </div>
+          <div class="symptom-card bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-head-side-mask mr-2"></i>Sore Throat</h3>
+            <p class="text-gray-700">Pain or irritation</p>
+          </div>
+        </div>
+        <div class="covid-warning p-4 rounded-lg mt-4">
+          <p class="text-red-800 font-medium"><i class="fas fa-exclamation-triangle mr-2"></i>Emergency warning signs: Trouble breathing, persistent chest pain, confusion, inability to wake/stay awake, pale/gray/blue skin/lips</p>
+        </div>
+      </section>
+
+      <section class="mt-8">
+        <h2><span class="emoji">🧪</span> Transmission & Risk Factors</h2>
+        <p class="text-gray-700">How COVID-19 spreads and who's at higher risk:</p>
+        <div class="grid gap-4 mt-4">
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-head-side-cough mr-2"></i>Respiratory Droplets</h3>
+            <p class="text-gray-700">From coughs, sneezes, or talking</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-hands mr-2"></i>Surface Contact</h3>
+            <p class="text-gray-700">Touching contaminated surfaces then face</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-user-injured mr-2"></i>High-Risk Groups</h3>
+            <p class="text-gray-700">Older adults, immunocompromised, chronic conditions</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-users mr-2"></i>Crowded Settings</h3>
+            <p class="text-gray-700">Poorly ventilated indoor spaces</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-8">
+        <h2><span class="emoji">🛡️</span> Prevention</h2>
+        <div class="grid md:grid-cols-2 gap-6 mt-6">
+          <div class="bg-blue-50 p-5 rounded-lg">
+            <h3 class="font-semibold text-blue-700 flex items-center">
+              <i class="fas fa-syringe mr-2"></i> Vaccination
+            </h3>
+            <ul class="mt-2 space-y-2 text-gray-700">
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Stay up-to-date with recommended vaccines</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Boosters for eligible individuals</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Reduces severe illness risk</li>
+            </ul>
+          </div>
+          <div class="bg-blue-50 p-5 rounded-lg">
+            <h3 class="font-semibold text-blue-700 flex items-center">
+              <i class="fas fa-hands-wash mr-2"></i> Hygiene
+            </h3>
+            <ul class="mt-2 space-y-2 text-gray-700">
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Frequent handwashing (20+ seconds)</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Hand sanitizer (60%+ alcohol)</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Avoid touching face</li>
+            </ul>
+          </div>
+          <div class="bg-blue-50 p-5 rounded-lg">
+            <h3 class="font-semibold text-blue-700 flex items-center">
+              <i class="fas fa-head-side-mask mr-2"></i> Protective Measures
+            </h3>
+            <ul class="mt-2 space-y-2 text-gray-700">
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Well-fitting masks in high-risk settings</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Physical distancing when appropriate</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Improve indoor ventilation</li>
+            </ul>
+          </div>
+          <div class="bg-blue-50 p-5 rounded-lg">
+            <h3 class="font-semibold text-blue-700 flex items-center">
+              <i class="fas fa-procedures mr-2"></i> If Infected
+            </h3>
+            <ul class="mt-2 space-y-2 text-gray-700">
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Isolate according to current guidelines</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Monitor symptoms closely</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Seek medical care if symptoms worsen</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-8">
+        <h2><span class="emoji">🏥</span> Treatment Options</h2>
+        <div class="grid md:grid-cols-2 gap-6 mt-6">
+          <div class="bg-white p-5 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-prescription-bottle-alt mr-2"></i> Antiviral Medications</h3>
+            <ul class="mt-2 space-y-2 text-gray-700">
+              <li class="flex items-start"><i class="fas fa-pills text-blue-500 mt-1 mr-2"></i> Paxlovid (nirmatrelvir/ritonavir)</li>
+              <li class="flex items-start"><i class="fas fa-pills text-blue-500 mt-1 mr-2"></i> Remdesivir (IV treatment)</li>
+              <li class="flex items-start"><i class="fas fa-pills text-blue-500 mt-1 mr-2"></i> Molnupiravir (alternative)</li>
+            </ul>
+          </div>
+          <div class="bg-white p-5 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-procedures mr-2"></i> Hospital Care</h3>
+            <ul class="mt-2 space-y-2 text-gray-700">
+              <li class="flex items-start"><i class="fas fa-lungs text-blue-500 mt-1 mr-2"></i> Oxygen therapy</li>
+              <li class="flex items-start"><i class="fas fa-shield-virus text-blue-500 mt-1 mr-2"></i> Immunomodulators (dexamethasone)</li>
+              <li class="flex items-start"><i class="fas fa-procedures text-blue-500 mt-1 mr-2"></i> Mechanical ventilation if severe</li>
+            </ul>
+          </div>
+          <div class="bg-white p-5 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-home mr-2"></i> Home Care</h3>
+            <ul class="mt-2 space-y-2 text-gray-700">
+              <li class="flex items-start"><i class="fas fa-bed text-blue-500 mt-1 mr-2"></i> Rest and hydration</li>
+              <li class="flex items-start"><i class="fas fa-temperature-high text-blue-500 mt-1 mr-2"></i> Fever reducers (acetaminophen)</li>
+              <li class="flex items-start"><i class="fas fa-heartbeat text-blue-500 mt-1 mr-2"></i> Pulse oximeter monitoring</li>
+            </ul>
+          </div>
+          <div class="bg-white p-5 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-heartbeat mr-2"></i> Long COVID Management</h3>
+            <ul class="mt-2 space-y-2 text-gray-700">
+              <li class="flex items-start"><i class="fas fa-clinic-medical text-blue-500 mt-1 mr-2"></i> Multidisciplinary rehabilitation</li>
+              <li class="flex items-start"><i class="fas fa-lungs text-blue-500 mt-1 mr-2"></i> Pulmonary therapy</li>
+              <li class="flex items-start"><i class="fas fa-brain text-blue-500 mt-1 mr-2"></i> Cognitive therapies if needed</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-8">
+        <h2><span class="emoji">⚠️</span> When to Seek Emergency Care</h2>
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg mt-4">
+          <p class="text-red-800 font-medium"><i class="fas fa-exclamation-triangle mr-2"></i>Seek immediate medical attention for:</p>
+          <ul class="mt-2 space-y-2 text-red-700">
+            <li class="flex items-start"><i class="fas fa-arrow-right text-red-500 mt-1 mr-2"></i> Trouble breathing</li>
+            <li class="flex items-start"><i class="fas fa-arrow-right text-red-500 mt-1 mr-2"></i> Persistent chest pain/pressure</li>
+            <li class="flex items-start"><i class="fas fa-arrow-right text-red-500 mt-1 mr-2"></i> New confusion</li>
+            <li class="flex items-start"><i class="fas fa-arrow-right text-red-500 mt-1 mr-2"></i> Inability to wake/stay awake</li>
+            <li class="flex items-start"><i class="fas fa-arrow-right text-red-500 mt-1 mr-2"></i> Pale/gray/blue skin, lips, or nail beds</li>
+            <li class="flex items-start"><i class="fas fa-arrow-right text-red-500 mt-1 mr-2"></i> Oxygen saturation below 90%</li>
+          </ul>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-700 text-white py-2 mt-8">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <h3 class="text-md font-semibold mb-3">Lung Care</h3>
+          <p class="text-blue-100 text-sm">Providing reliable information about lung health and respiratory diseases.</p>
+        </div>
+        <div>
+          <h3 class="text-md font-semibold mb-3">Quick Links</h3>
+          <ul class="space-y-1 text-sm">
+            <li><a href="http://localhost:3000/" class="text-blue-100 hover:text-white transition-colors">Home</a></li>
+            <li><a href="/diseases/pneumonia" class="text-blue-100 hover:text-white transition-colors">Pneumonia</a></li>
+            <li><a href="/diseases/asthma" class="text-blue-100 hover:text-white transition-colors">Asthma</a></li>
+            <li><a href="/diseases/copd" class="text-blue-100 hover:text-white transition-colors">COPD</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-md font-semibold mb-3">Contact</h3>
+          <p class="text-blue-100 text-sm">For medical emergencies, call your local emergency number immediately.</p>
+        </div>
+      </div>
+      <div class="border-t border-blue-600 mt-6 pt-4 text-center text-blue-100 text-sm">
+        <p>© 2025 Lung Care. All information is for educational purposes only.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <a href="#" class="back-to-top hidden" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- 📜 Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init();
+    
+    // Back to top button
+    const backToTopButton = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('hidden');
+      } else {
+        backToTopButton.classList.add('hidden');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

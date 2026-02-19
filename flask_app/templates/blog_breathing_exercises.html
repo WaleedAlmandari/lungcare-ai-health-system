@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breathing Exercises for Better Lung Capacity | Lung Care</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      font-family: 'Roboto', sans-serif;
+    }
+    .prose a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .prose a:hover {
+      text-decoration: underline;
+    }
+    .image-card {
+      transition: transform 0.3s ease;
+    }
+    .image-card:hover {
+      transform: scale(1.01);
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    .article-content p {
+      margin-bottom: 1.25rem;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-left: 4px solid #3b82f6;
+    }
+  </style>
+</head>
+<body class="text-gray-800 bg-gray-50">
+
+  <!-- Chatbot Widget (Small Box, Left Bottom Corner, Clean Border & Shadow) -->
+<div id="chatbot-widget" style="
+  position: fixed;
+  bottom: 20px;
+  left:-20px;
+  width: 300px;
+  height: 420px;
+  z-index: 9999;
+  border-radius: 0px;
+  overflow: hidden;
+  background-color:transparent;
+">
+  <iframe
+    src="http://localhost:3000/chatbot-widget"
+    width="100%"
+    height="100%"
+    frameborder="0"
+    style="border: none;"
+  ></iframe>
+</div>
+
+<!-- Navigation -->
+<nav class="bg-gradient-to-r from-blue-600 to-blue-800 text-white w-full py-3 shadow-lg sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+    <a href="http://localhost:3000/" class="text-xl font-bold flex items-center">
+      <i class="fas fa-lungs mr-2"></i> LungCare
+    </a>
+    
+    <div class="hidden md:flex space-x-6">
+      <!-- Home Link -->
+      <a href="http://localhost:3000/" class="hover:text-blue-200 transition flex items-center">
+        Home
+      </a>
+      
+      <!-- Articles Dropdown -->
+      <div class="relative group">
+        <button class="hover:text-blue-200 transition flex items-center">
+          Articles <i class="fas fa-chevron-down ml-1 text-xs"></i>
+        </button>
+        <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-1 w-64 z-50">
+          <a href="http://127.0.0.1:5000/blog/air-pollution" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">How Air Pollution Affects Your Lungs</a>
+          <a href="http://127.0.0.1:5000/blog/asthma-vs-copd" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Difference Between Asthma and COPD</a>
+          <a href="http://127.0.0.1:5000/blog/lung-function" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Foods That Improve Lung Function</a>
+          <a href="http://127.0.0.1:5000/blog/smoking-impact" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">The Impact of Smoking on Young Adults</a>
+          <a href="http://127.0.0.1:5000/blog/breathing-exercises" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Breathing Exercises for Better Lung Capacity</a>
+          <a href="http://127.0.0.1:5000/blog/long-covid" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Understanding Long COVID and Lung Recovery</a>
+        </div>
+      </div>
+      
+      <!-- Diseases Dropdown -->
+      <div class="relative group">
+        <button class="hover:text-blue-200 transition flex items-center">
+          Diseases <i class="fas fa-chevron-down ml-1 text-xs"></i>
+        </button>
+        <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-1 w-64 z-50">
+          <a href="http://localhost:5000/diseases/pneumonia" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Pneumonia</a>
+          <a href="http://localhost:5000/diseases/lung-cancer" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Lung Cancer</a>
+          <a href="http://localhost:5000/diseases/asthma" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Asthma</a>
+          <a href="http://localhost:5000/diseases/pulmonary-fibrosis" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Pulmonary Fibrosis</a>
+          <a href="http://localhost:5000/diseases/copd" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">COPD</a>
+          <a href="http://localhost:5000/diseases/covid-19" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">COVID-19</a>
+        </div>
+      </div>
+      
+      <!-- AI Tools Dropdown -->
+      <div class="relative group">
+        <button class="hover:text-blue-200 transition flex items-center">
+          AI Tools <i class="fas fa-chevron-down ml-1 text-xs"></i>
+        </button>
+        <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-1 w-64 z-50">
+          <a href="http://localhost:3000/xray" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">X-ray Pneumonia Detection</a>
+          <a href="http://localhost:3000/lung-cancer-predictor" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Lung Cancer Risk</a>
+          <a href="http://localhost:3000/symptom-checker" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Symptom Checker</a>
+          <a href="http://localhost:3000/air-quality" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Air Quality Checker</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu button -->
+    <button class="md:hidden text-xl">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- Blog Content -->
+<main class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+  <article class="prose lg:prose-xl">
+    <!-- Article Header -->
+    <header class="mb-12 text-center">
+      <div class="inline-block px-4 py-2 mb-4 text-sm font-semibold text-teal-700 bg-teal-100 rounded-full uppercase tracking-wider">
+        LUNG HEALTH
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+        Breathing Exercises for Better <span class="text-teal-600">Lung Capacity</span>
+      </h1>
+      <div class="flex justify-center items-center text-gray-500 text-sm">
+        <span class="mr-4"><i class="far fa-calendar-alt mr-1"></i> July 10, 2023</span>
+        <span><i class="far fa-clock mr-1"></i> 6 min read</span>
+      </div>
+    </header>
+
+    <!-- Featured Image -->
+    <div class="image-card my-8 rounded-xl overflow-hidden shadow-xl">
+      <img src="/static/breathing-exercises.jpg" 
+           alt="Person practicing breathing exercises"
+           class="w-full h-64 md:h-96 object-cover">
+      <p class="text-center text-sm text-gray-500 mt-2 italic">Simple exercises can significantly improve lung function and capacity</p>
+    </div>
+
+    <!-- Article Content -->
+    <div class="article-content">
+      <section>
+        <div class="highlight-box rounded-r-lg pl-6 pr-4 py-4 mb-8">
+          <p class="text-lg md:text-xl font-medium text-gray-700">
+            Your lungs are muscles that can be trained just like any other in your body. Regular breathing exercises can increase lung capacity by up to 15%, improve oxygen efficiency, and help manage respiratory conditions. These techniques are used by athletes, singers, and respiratory therapists alike.
+          </p>
+        </div>
+        
+        <p>Most people use only about 50-70% of their total lung capacity in daily life. Through targeted breathing exercises, you can strengthen your respiratory muscles, improve oxygen exchange, and enhance your body's ability to handle physical activity. Whether you're recovering from illness, managing a chronic condition, or simply looking to optimize your health, these exercises offer measurable benefits.</p>
+      </section>
+
+      <section class="mt-10">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+          <i class="fas fa-lungs text-teal-500 mr-2"></i> Foundational Breathing Exercises
+        </h2>
+        
+        <p>These basic exercises form the cornerstone of respiratory training and can be done anywhere, anytime:</p>
+        
+        <div class="grid md:grid-cols-2 gap-4 my-6">
+          <div class="bg-white p-4 rounded-lg shadow-md border-t-4 border-teal-500">
+            <h3 class="font-semibold text-teal-600 flex items-center">
+              <i class="fas fa-wind mr-2"></i> Diaphragmatic Breathing
+            </h3>
+            <p class="text-gray-600 mt-1">Also called "belly breathing," this engages the diaphragm for more efficient oxygen exchange. Studies show it can increase tidal volume by 30% with regular practice.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-md border-t-4 border-blue-500">
+            <h3 class="font-semibold text-blue-600 flex items-center">
+              <i class="fas fa-hourglass-half mr-2"></i> 4-7-8 Technique
+            </h3>
+            <p class="text-gray-600 mt-1">Inhale for 4 counts, hold for 7, exhale for 8. This Harvard-developed method reduces stress while increasing lung capacity.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-md border-t-4 border-purple-500">
+            <h3 class="font-semibold text-purple-600 flex items-center">
+              <i class="fas fa-fire-alt mr-2"></i> Pursed-Lip Breathing
+            </h3>
+            <p class="text-gray-600 mt-1">Inhale through nose, exhale through pursed lips. Particularly beneficial for COPD patients, reducing breathlessness by 25%.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-md border-t-4 border-orange-500">
+            <h3 class="font-semibold text-orange-600 flex items-center">
+              <i class="fas fa-expand-alt mr-2"></i> Box Breathing
+            </h3>
+            <p class="text-gray-600 mt-1">Equal duration inhale, hold, exhale, hold (like sides of a box). Used by Navy SEALs to enhance performance under stress.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          <i class="fas fa-running text-teal-500 mr-2"></i> Advanced Techniques
+        </h2>
+        
+        <p>For those looking to maximize their lung capacity, these advanced methods offer significant benefits:</p>
+        
+        <div class="grid md:grid-cols-2 gap-6 mt-8">
+          <div class="bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-xl shadow-md border-l-4 border-teal-500 transition duration-300 hover:shadow-lg">
+            <h3 class="font-semibold text-teal-700 text-xl flex items-center">
+              <i class="fas fa-mountain mr-2"></i> High-Altitude Simulation
+            </h3>
+            <p class="mt-3 text-gray-700">Mimics high-altitude conditions to increase red blood cell production and oxygen efficiency.</p>
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-start">
+                <span class="bg-teal-100 text-teal-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700">Practice at rest before trying during activity</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-teal-100 text-teal-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700">Use controlled breath holds during exhalation</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-teal-100 text-teal-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700">Build up gradually - start with 10-15 second holds</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-md border-l-4 border-blue-500 transition duration-300 hover:shadow-lg">
+            <h3 class="font-semibold text-blue-700 text-xl flex items-center">
+              <i class="fas fa-dumbbell mr-2"></i> Resistive Breathing
+            </h3>
+            <p class="mt-3 text-gray-700">Uses resistance to strengthen respiratory muscles, shown to increase lung capacity by 10-15% in 6 weeks.</p>
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-start">
+                <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700">Can use specialized devices or simple straw technique</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700">Focus on slow, controlled exhalation against resistance</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700">Practice 5-10 minutes daily for best results</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          <i class="fas fa-user-md text-teal-500 mr-2"></i> Exercises for Specific Conditions
+        </h2>
+        
+        <p>Tailored approaches for common respiratory challenges:</p>
+        
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl shadow-inner border border-purple-200 mt-6">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="font-semibold text-purple-700 text-lg flex items-center mb-3">
+                <i class="fas fa-allergies text-purple-600 mr-2"></i> For Asthma
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <span class="bg-white text-purple-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>Papworth Method:</strong> Combines diaphragmatic breathing with relaxation techniques</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-white text-purple-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>Buteyko Breathing:</strong> Reduces hyperventilation and medication use</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-purple-700 text-lg flex items-center mb-3">
+                <i class="fas fa-lungs text-purple-600 mr-2"></i> For COPD
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <span class="bg-white text-purple-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>Pursed-Lip Breathing:</strong> Keeps airways open longer during exhalation</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-white text-purple-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>Coordinated Breathing:</strong> Matches breathing to movement during activity</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="mt-6 p-4 bg-white bg-opacity-70 rounded-lg">
+            <h4 class="font-semibold text-purple-700 flex items-center">
+              <i class="fas fa-heartbeat mr-2"></i> Post-COVID Recovery
+            </h4>
+            <p class="text-gray-700 mt-2">For those recovering from respiratory illness, focus on gradual progression. Start with 2-3 minutes of diaphragmatic breathing several times daily, slowly increasing duration as tolerance improves. The "3-3-3 Rule" (3 exercises, 3 minutes each, 3 times daily) provides a structured approach.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          <i class="fas fa-chart-line text-teal-500 mr-2"></i> Measurable Benefits
+        </h2>
+        
+        <p>Clinical research demonstrates the effectiveness of breathing exercises:</p>
+        
+        <div class="grid md:grid-cols-3 gap-5 mt-6">
+          <div class="stat-card bg-white p-5 rounded-xl shadow-md text-center transition duration-300 hover:shadow-lg">
+            <div class="text-4xl font-bold text-teal-600 mb-2">12%</div>
+            <p class="text-gray-600 text-sm">Increase in forced vital capacity (FVC) after 8 weeks of daily breathing exercises (European Respiratory Journal)</p>
+            <div class="mt-3 h-1 bg-gradient-to-r from-teal-100 to-teal-300 rounded-full"></div>
+          </div>
+          <div class="stat-card bg-white p-5 rounded-xl shadow-md text-center transition duration-300 hover:shadow-lg">
+            <div class="text-4xl font-bold text-teal-600 mb-2">30%</div>
+            <p class="text-gray-600 text-sm">Reduction in asthma symptoms with Buteyko method compared to controls (Thorax Journal)</p>
+            <div class="mt-3 h-1 bg-gradient-to-r from-teal-100 to-teal-300 rounded-full"></div>
+          </div>
+          <div class="stat-card bg-white p-5 rounded-xl shadow-md text-center transition duration-300 hover:shadow-lg">
+            <div class="text-4xl font-bold text-teal-600 mb-2">2.5x</div>
+            <p class="text-gray-600 text-sm">Longer breath-hold times in trained individuals vs untrained (Journal of Applied Physiology)</p>
+            <div class="mt-3 h-1 bg-gradient-to-r from-teal-100 to-teal-300 rounded-full"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          <i class="fas fa-stopwatch text-teal-500 mr-2"></i> Getting Started Guide
+        </h2>
+        
+        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-1/2">
+              <h3 class="font-semibold text-teal-700 text-lg mb-3">Beginner Routine</h3>
+              <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                <li>Start with 5 minutes daily, morning and evening</li>
+                <li>Begin with diaphragmatic breathing while lying down</li>
+                <li>Progress to seated, then standing positions</li>
+                <li>Add one new technique each week</li>
+                <li>Use a timer to track progress</li>
+              </ol>
+            </div>
+            <div class="md:w-1/2">
+              <h3 class="font-semibold text-teal-700 text-lg mb-3">Progression Tips</h3>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>Increase duration by 1 minute weekly</li>
+                <li>Add resistance (straw breathing) after 2 weeks</li>
+                <li>Incorporate movement (walking, stretching)</li>
+                <li>Track measurements (breath-hold time, exercise tolerance)</li>
+                <li>Consider using a spirometer for objective feedback</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="mt-6 bg-blue-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-blue-700 flex items-center">
+              <i class="fas fa-exclamation-triangle mr-2"></i> Safety Considerations
+            </h4>
+            <p class="text-gray-700 mt-2 text-sm">Stop if you feel dizzy or lightheaded. Those with COPD, heart conditions, or recent surgery should consult a doctor before beginning. Never practice breathing exercises while driving or in water.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12 bg-blue-50 p-6 rounded-xl border border-blue-200">
+        <h2 class="text-xl font-bold text-blue-800 mb-3">
+          <i class="fas fa-book-open text-blue-600 mr-2"></i> Further Resources
+        </h2>
+        <ul class="space-y-3">
+          <li>
+            <a href="https://www.lung.org/lung-health-diseases/wellness/breathing-exercises" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-blue-600 hover:text-blue-800 hover:underline flex items-start">
+              <span class="bg-blue-100 text-blue-600 rounded p-1 mr-3">
+                <i class="fas fa-external-link-alt text-sm"></i>
+              </span>
+              <span>
+                <strong>American Lung Association: Breathing Exercises</strong> - Video demonstrations and guides
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5455070/" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-blue-600 hover:text-blue-800 hover:underline flex items-start">
+              <span class="bg-blue-100 text-blue-600 rounded p-1 mr-3">
+                <i class="fas fa-external-link-alt text-sm"></i>
+              </span>
+              <span>
+                <strong>NIH Review: Breathing Exercises</strong> - Scientific analysis of benefits
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+          <i class="fas fa-question-circle text-indigo-600 mr-2"></i> Frequently Asked Questions
+        </h2>
+        
+        <div class="space-y-4">
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-gray-800 flex items-center">
+              <i class="fas fa-question text-indigo-500 mr-2"></i> How soon will I see results?
+            </h4>
+            <p class="text-gray-700 mt-2 text-sm">Most people notice improved breathing ease within 1-2 weeks. Measurable increases in lung capacity typically appear after 4-6 weeks of consistent practice. For chronic conditions, maximum benefits may take 3-6 months.</p>
+          </div>
+          
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-gray-800 flex items-center">
+              <i class="fas fa-question text-indigo-500 mr-2"></i> Can breathing exercises help with anxiety?
+            </h4>
+            <p class="text-gray-700 mt-2 text-sm">Absolutely. Techniques like 4-7-8 breathing activate the parasympathetic nervous system, reducing stress hormones. Research shows they can lower anxiety scores by 30-40% when practiced regularly.</p>
+          </div>
+          
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-gray-800 flex items-center">
+              <i class="fas fa-question text-indigo-500 mr-2"></i> What's the best time to practice?
+            </h4>
+            <p class="text-gray-700 mt-2 text-sm">Morning practice helps set breathing patterns for the day. Evening practice can improve sleep. Avoid immediately after meals. Consistency matters more than timing - choose times you can stick with daily.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mt-12 pt-8 border-t border-gray-200">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="flex space-x-4 mb-4 md:mb-0">
+            <span class="text-sm font-medium text-gray-500">Share this article:</span>
+            <a href="https://twitter.com/intent/tweet?url=http://127.0.0.1:5000/blog/breathing-exercises&text=Check%20out%20these%20effective%20breathing%20exercises%20for%20better%20lung%20capacity" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-blue-400 hover:text-blue-600 transition" 
+               title="Share on Twitter">
+              <i class="fab fa-twitter text-lg"></i>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:5000/blog/breathing-exercises" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-blue-600 hover:text-blue-800 transition" 
+               title="Share on Facebook">
+              <i class="fab fa-facebook-f text-lg"></i>
+            </a>
+            <a href="https://pinterest.com/pin/create/button/?url=http://127.0.0.1:5000/blog/breathing-exercises&media=&description=Breathing%20Exercises%20for%20Better%20Lung%20Capacity" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-red-500 hover:text-red-700 transition" 
+               title="Share on Pinterest">
+              <i class="fab fa-pinterest-p text-lg"></i>
+            </a>
+          </div>
+          <a href="http://localhost:3000/#blog" class="text-blue-600 font-medium inline-flex items-center hover:text-blue-800 transition">
+            <i class="fas fa-arrow-left mr-2"></i> Back to All Articles
+          </a>
+        </div>
+        <div class="mt-6 text-center text-sm text-gray-500">
+          <p>© 2023 LungCare. All rights reserved. | Medical review by Dr. Sarah Johnson, Pulmonologist</p>
+        </div>
+      </footer>
+    </div>
+  </article>
+</main>
+
+<!-- Footer -->
+  <footer class="bg-blue-700 text-white py-2 mt-8">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <h3 class="text-md font-semibold mb-3">Lung Care</h3>
+          <p class="text-blue-100 text-sm">Providing reliable information about lung health and respiratory diseases.</p>
+        </div>
+        <div>
+          <h3 class="text-md font-semibold mb-3">Quick Links</h3>
+          <ul class="space-y-1 text-sm">
+            <li><a href="http://localhost:3000/" class="text-blue-100 hover:text-white transition-colors">Home</a></li>
+            <li><a href="/diseases/pneumonia" class="text-blue-100 hover:text-white transition-colors">Pneumonia</a></li>
+            <li><a href="/diseases/asthma" class="text-blue-100 hover:text-white transition-colors">Asthma</a></li>
+            <li><a href="/diseases/copd" class="text-blue-100 hover:text-white transition-colors">COPD</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-md font-semibold mb-3">Contact</h3>
+          <p class="text-blue-100 text-sm">For medical emergencies, call your local emergency number immediately.</p>
+        </div>
+      </div>
+      <div class="border-t border-blue-600 mt-6 pt-4 text-center text-blue-100 text-sm">
+        <p>© 2025 Lung Care. All information is for educational purposes only.</p>
+      </div>
+    </div>
+  </footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  // Back to top button functionality
+  const backToTopButton = document.getElementById('backToTop');
+  
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.remove('opacity-0', 'invisible');
+      backToTopButton.classList.add('opacity-100', 'visible');
+    } else {
+      backToTopButton.classList.remove('opacity-100', 'visible');
+      backToTopButton.classList.add('opacity-0', 'invisible');
+    }
+  });
+  
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Air Pollution Affects Your Lungs | Lung Care</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      font-family: 'Roboto', sans-serif;
+    }
+    .prose a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .prose a:hover {
+      text-decoration: underline;
+    }
+    .image-card {
+      transition: transform 0.3s ease;
+    }
+    .image-card:hover {
+      transform: scale(1.01);
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    .article-content p {
+      margin-bottom: 1.25rem;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-left: 4px solid #3b82f6;
+    }
+  </style>
+</head>
+<body class="text-gray-800 bg-gray-50">
+
+  <!-- Chatbot Widget (Small Box, Left Bottom Corner, Clean Border & Shadow) -->
+<div id="chatbot-widget" style="
+  position: fixed;
+  bottom: 20px;
+  left:-20px;
+  width: 300px;
+  height: 420px;
+  z-index: 9999;
+  border-radius: 0px;
+  overflow: hidden;
+  background-color:transparent;
+">
+  <iframe
+    src="http://localhost:3000/chatbot-widget"
+    width="100%"
+    height="100%"
+    frameborder="0"
+    style="border: none;"
+  ></iframe>
+</div>
+
+<!-- Navigation -->
+<nav class="bg-gradient-to-r from-blue-600 to-blue-800 text-white w-full py-3 shadow-lg sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+    <a href="http://localhost:3000/" class="text-xl font-bold flex items-center">
+      <i class="fas fa-lungs mr-2"></i> LungCare
+    </a>
+    
+    <div class="hidden md:flex space-x-6">
+      <!-- Home Link -->
+      <a href="http://localhost:3000/" class="hover:text-blue-200 transition flex items-center">
+        Home
+      </a>
+      
+      <!-- Articles Dropdown -->
+      <div class="relative group">
+        <button class="hover:text-blue-200 transition flex items-center">
+          Articles <i class="fas fa-chevron-down ml-1 text-xs"></i>
+        </button>
+        <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-1 w-64 z-50">
+          <a href="http://127.0.0.1:5000/blog/air-pollution" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">How Air Pollution Affects Your Lungs</a>
+          <a href="http://127.0.0.1:5000/blog/asthma-vs-copd" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Difference Between Asthma and COPD</a>
+          <a href="http://127.0.0.1:5000/blog/lung-function" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Foods That Improve Lung Function</a>
+          <a href="http://127.0.0.1:5000/blog/smoking-impact" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">The Impact of Smoking on Young Adults</a>
+          <a href="http://127.0.0.1:5000/blog/breathing-exercises" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Breathing Exercises for Better Lung Capacity</a>
+          <a href="http://127.0.0.1:5000/blog/long-covid" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Understanding Long COVID and Lung Recovery</a>
+        </div>
+      </div>
+      
+      <!-- Diseases Dropdown -->
+      <div class="relative group">
+        <button class="hover:text-blue-200 transition flex items-center">
+          Diseases <i class="fas fa-chevron-down ml-1 text-xs"></i>
+        </button>
+        <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-1 w-64 z-50">
+          <a href="http://localhost:5000/diseases/pneumonia" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Pneumonia</a>
+          <a href="http://localhost:5000/diseases/lung-cancer" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Lung Cancer</a>
+          <a href="http://localhost:5000/diseases/asthma" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Asthma</a>
+          <a href="http://localhost:5000/diseases/pulmonary-fibrosis" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Pulmonary Fibrosis</a>
+          <a href="http://localhost:5000/diseases/copd" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">COPD</a>
+          <a href="http://localhost:5000/diseases/covid-19" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">COVID-19</a>
+        </div>
+      </div>
+      
+      <!-- AI Tools Dropdown -->
+      <div class="relative group">
+        <button class="hover:text-blue-200 transition flex items-center">
+          AI Tools <i class="fas fa-chevron-down ml-1 text-xs"></i>
+        </button>
+        <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-1 w-64 z-50">
+          <a href="http://localhost:3000/xray" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">X-ray Pneumonia Detection</a>
+          <a href="http://localhost:3000/lung-cancer-predictor" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Lung Cancer Risk</a>
+          <a href="http://localhost:3000/symptom-checker" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Symptom Checker</a>
+          <a href="http://localhost:3000/air-quality" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Air Quality Checker</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu button -->
+    <button class="md:hidden text-xl">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- Blog Content -->
+<main class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+  <article class="prose lg:prose-xl">
+    <!-- Article Header -->
+    <header class="mb-12 text-center">
+      <div class="inline-block px-4 py-2 mb-4 text-sm font-semibold text-blue-700 bg-blue-100 rounded-full uppercase tracking-wider">
+        ENVIRONMENTAL HEALTH
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+        How Air Pollution Affects Your <span class="text-blue-600">Lungs</span>
+      </h1>
+      <div class="flex justify-center items-center text-gray-500 text-sm">
+        <span class="mr-4"><i class="far fa-calendar-alt mr-1"></i> June 15, 2023</span>
+        <span><i class="far fa-clock mr-1"></i> 8 min read</span>
+      </div>
+    </header>
+
+    
+    <!-- Featured Image -->
+<div class="image-card my-8 rounded-xl overflow-hidden shadow-xl">
+  <img src="/static/air pollution.jpg" 
+       alt="Illustration of lungs affected by air pollution"
+       class="w-full h-64 md:h-96 object-cover">
+  <p class="text-center text-sm text-gray-500 mt-2 italic">Health impacts of air pollution</p>
+</div>
+
+    <!-- Article Content -->
+    <div class="article-content">
+      <section>
+        <div class="highlight-box rounded-r-lg pl-6 pr-4 py-4 mb-8">
+          <p class="text-lg md:text-xl font-medium text-gray-700">
+            Every breath you take matters. With increasing urbanization, understanding how air pollution impacts your respiratory system is crucial for protecting your lung health. The World Health Organization estimates that 9 out of 10 people breathe air containing high levels of pollutants, making this one of the most pressing public health issues of our time.
+          </p>
+        </div>
+        
+        <p>Air pollution has become an inescapable part of modern life, particularly in urban environments. From vehicle emissions to industrial byproducts, the air we breathe carries microscopic threats that can have both immediate and long-term consequences for our respiratory health. This article explores the complex relationship between air pollution and lung function, providing actionable insights to protect yourself and your loved ones.</p>
+      </section>
+
+      <section class="mt-10">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+          <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i> The Invisible Threat to Your Airways
+        </h2>
+        
+        <p>Air pollution consists of a complex mixture of harmful particles and gases that can severely damage your respiratory system. These pollutants vary in size, chemical composition, and origin, but they all share the ability to compromise lung function and overall health.</p>
+        
+        <div class="grid md:grid-cols-2 gap-4 my-6">
+          <div class="bg-white p-4 rounded-lg shadow-md border-t-4 border-red-500">
+            <h3 class="font-semibold text-red-600 flex items-center">
+              <i class="fas fa-smog mr-2"></i> PM2.5 (Particulate Matter)
+            </h3>
+            <p class="text-gray-600 mt-1">These fine particles (less than 2.5 micrometers in diameter) are small enough to penetrate deep into the lungs and even enter the bloodstream. They originate from vehicle exhaust, industrial emissions, and natural sources like wildfires. PM2.5 is particularly dangerous because its small size allows it to bypass the body's natural defense mechanisms.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-md border-t-4 border-orange-500">
+            <h3 class="font-semibold text-orange-600 flex items-center">
+              <i class="fas fa-cloud-sun mr-2"></i> Ozone (O₃)
+            </h3>
+            <p class="text-gray-600 mt-1">A reactive gas that forms when sunlight interacts with pollutants from vehicles and industry. Ground-level ozone reacts chemically with lung tissue, causing inflammation and damage similar to sunburn on the lungs. It's particularly problematic on hot, sunny days in urban areas.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-md border-t-4 border-blue-500">
+            <h3 class="font-semibold text-blue-600 flex items-center">
+              <i class="fas fa-industry mr-2"></i> Nitrogen Dioxide (NO₂)
+            </h3>
+            <p class="text-gray-600 mt-1">Primarily emitted from vehicle exhaust and power plants, this gas irritates the airways and reduces lung function. Long-term exposure can increase susceptibility to respiratory infections and may contribute to the development of asthma in children.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-md border-t-4 border-purple-500">
+            <h3 class="font-semibold text-purple-600 flex items-center">
+              <i class="fas fa-fire mr-2"></i> Sulfur Dioxide (SO₂)
+            </h3>
+            <p class="text-gray-600 mt-1">Produced by burning fossil fuels containing sulfur, this gas constricts airways and worsens existing respiratory conditions. It's particularly problematic near industrial facilities and power plants that burn coal or oil.</p>
+          </div>
+        </div>
+        
+        <p class="mt-4">The health effects of these pollutants are compounded by their ability to work synergistically. For example, when ozone and particulate matter are present together, their combined effect on respiratory health can be greater than the sum of their individual effects.</p>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          <i class="fas fa-heartbeat text-red-500 mr-2"></i> Direct Impacts on Lung Health
+        </h2>
+        
+        <p>The respiratory system is particularly vulnerable to air pollution because it serves as the primary interface between our bodies and the external environment. Each breath brings not only life-sustaining oxygen but also potentially harmful pollutants that can affect our lungs in various ways.</p>
+        
+        <div class="grid md:grid-cols-2 gap-6 mt-8">
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-md border-l-4 border-blue-500 transition duration-300 hover:shadow-lg">
+            <h3 class="font-semibold text-blue-700 text-xl flex items-center">
+              <i class="fas fa-clock mr-2"></i> Short-Term Effects
+            </h3>
+            <p class="mt-3 text-gray-700">Even brief exposure to polluted air can trigger immediate respiratory symptoms, particularly in sensitive individuals. These effects are often reversible but can be severe enough to require medical attention.</p>
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-start">
+                <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700"><strong>Airway irritation:</strong> Pollutants can cause immediate inflammation of the airways, leading to coughing, throat irritation, and chest tightness.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700"><strong>Reduced lung function:</strong> Temporary decreases in lung capacity and oxygen absorption can occur, measurable by spirometry tests.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700"><strong>Asthma exacerbations:</strong> Pollution triggers airway inflammation and bronchoconstriction, increasing the frequency and severity of asthma attacks.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700"><strong>Respiratory infections:</strong> By damaging airway defenses, pollution increases susceptibility to bronchitis, pneumonia, and other infections.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl shadow-md border-l-4 border-red-500 transition duration-300 hover:shadow-lg">
+            <h3 class="font-semibold text-red-700 text-xl flex items-center">
+              <i class="fas fa-calendar-alt mr-2"></i> Long-Term Effects
+            </h3>
+            <p class="mt-3 text-gray-700">Chronic exposure to air pollution leads to cumulative damage that can permanently alter lung structure and function, with consequences that may persist even after exposure ends.</p>
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-start">
+                <span class="bg-red-100 text-red-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-exclamation-triangle text-xs"></i>
+                </span>
+                <span class="text-gray-700"><strong>Accelerated lung aging:</strong> Pollution causes oxidative stress that accelerates the natural decline in lung function that occurs with age.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-red-100 text-red-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-exclamation-triangle text-xs"></i>
+                </span>
+                <span class="text-gray-700"><strong>Chronic bronchitis:</strong> Persistent inflammation leads to mucus hypersecretion and chronic cough lasting months to years.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-red-100 text-red-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-exclamation-triangle text-xs"></i>
+                </span>
+                <span class="text-gray-700"><strong>Lung cancer risk:</strong> Certain pollutants contain carcinogens that can lead to genetic mutations in lung cells over time.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-red-100 text-red-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-exclamation-triangle text-xs"></i>
+                </span>
+                <span class="text-gray-700"><strong>COPD development:</strong> Chronic inflammation and tissue remodeling lead to irreversible airflow limitation characteristic of COPD.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-8 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
+          <h4 class="font-semibold text-yellow-800 flex items-center">
+            <i class="fas fa-lightbulb mr-2"></i> Did You Know?
+          </h4>
+          <p class="text-gray-700 mt-2">The damage from air pollution begins before birth. Studies show that exposure during pregnancy can affect fetal lung development and increase the risk of respiratory problems in childhood. This makes protection important at all stages of life.</p>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          <i class="fas fa-shield-alt text-green-600 mr-2"></i> Protective Measures
+        </h2>
+        
+        <p>While we can't always control the quality of the air around us, there are effective strategies to minimize our exposure to harmful pollutants and support lung health. These protective measures fall into two main categories: reducing indoor exposure and managing outdoor exposure.</p>
+        
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl shadow-inner border border-green-200 mt-6">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="font-semibold text-green-700 text-lg flex items-center mb-3">
+                <i class="fas fa-home text-green-600 mr-2"></i> Indoor Protection Strategies
+              </h3>
+              <p class="text-gray-700 mb-3">Since most people spend about 90% of their time indoors, improving indoor air quality is crucial for lung health.</p>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <span class="bg-white text-green-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>HEPA air purifiers:</strong> These devices can remove up to 99.97% of particles 0.3 microns or larger. Place them in bedrooms and living areas where you spend the most time.</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-white text-green-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>Ventilation management:</strong> Create cross-breezes by opening windows on opposite sides of your home when outdoor air quality is good. Use exhaust fans in kitchens and bathrooms.</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-white text-green-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>Smoke-free environment:</strong> Absolutely avoid indoor smoking or vaping, as secondhand smoke contains thousands of harmful chemicals that linger in the air.</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-white text-green-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>Natural cleaning products:</strong> Many conventional cleaners release volatile organic compounds (VOCs). Opt for vinegar, baking soda, or certified green products instead.</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-green-700 text-lg flex items-center mb-3">
+                <i class="fas fa-tree text-green-600 mr-2"></i> Outdoor Protection Strategies
+              </h3>
+              <p class="text-gray-700 mb-3">When venturing outside, especially in urban areas, these strategies can help minimize your pollution exposure.</p>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <span class="bg-white text-green-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>Air quality monitoring:</strong> Check real-time air quality indexes (like AQI) before planning outdoor activities. Many weather apps now include this feature.</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-white text-green-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>Proper mask usage:</strong> On high pollution days, wear properly fitted N95 masks (not surgical masks) which can filter out 95% of airborne particles.</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-white text-green-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>Timing outdoor activities:</strong> Avoid outdoor exercise during rush hours (7-9am and 4-6pm) when traffic emissions peak. Early morning is often best.</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-white text-green-600 rounded-full p-1 mr-3 shadow-sm">
+                    <i class="fas fa-check text-xs"></i>
+                  </span>
+                  <span class="text-gray-700"><strong>Route selection:</strong> Choose walking routes away from busy roads. Even moving a few blocks away from major thoroughfares can significantly reduce exposure.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="mt-6 p-4 bg-white bg-opacity-70 rounded-lg">
+            <h4 class="font-semibold text-green-700 flex items-center">
+              <i class="fas fa-seedling mr-2"></i> Lung-Supporting Lifestyle Choices
+            </h4>
+            <p class="text-gray-700 mt-2">Beyond avoiding pollutants, you can actively support your lung health through diet and exercise. Foods rich in antioxidants (berries, leafy greens, nuts) help combat oxidative stress caused by pollution. Regular aerobic exercise strengthens respiratory muscles and improves lung capacity, though it's best done when air quality is good.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+          <i class="fas fa-user-injured text-purple-600 mr-2"></i> Vulnerable Groups
+        </h2>
+        
+        <p>While air pollution affects everyone, certain populations are particularly susceptible to its harmful effects. These groups often experience more severe health consequences at lower exposure levels and may need to take extra precautions.</p>
+        
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg shadow-sm border-l-4 border-purple-500 mt-4">
+          <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+            <div class="bg-white bg-opacity-70 p-3 rounded-lg shadow-xs">
+              <h4 class="font-semibold text-purple-700 flex items-center">
+                <i class="fas fa-child text-purple-500 mr-2"></i> Children
+              </h4>
+              <p class="text-gray-700 text-sm mt-1">Their developing lungs and higher breathing rates make them more vulnerable. Exposure can lead to lifelong reductions in lung function.</p>
+            </div>
+            <div class="bg-white bg-opacity-70 p-3 rounded-lg shadow-xs">
+              <h4 class="font-semibold text-purple-700 flex items-center">
+                <i class="fas fa-user-tie text-purple-500 mr-2"></i> Elderly
+              </h4>
+              <p class="text-gray-700 text-sm mt-1">Aging lungs have reduced capacity to repair damage and clear pollutants, increasing risk of complications.</p>
+            </div>
+            <div class="bg-white bg-opacity-70 p-3 rounded-lg shadow-xs">
+              <h4 class="font-semibold text-purple-700 flex items-center">
+                <i class="fas fa-allergies text-purple-500 mr-2"></i> Asthma/COPD Patients
+              </h4>
+              <p class="text-gray-700 text-sm mt-1">Already compromised airways are more reactive to irritants, leading to more frequent and severe symptoms.</p>
+            </div>
+            <div class="bg-white bg-opacity-70 p-3 rounded-lg shadow-xs">
+              <h4 class="font-semibold text-purple-700 flex items-center">
+                <i class="fas fa-hard-hat text-purple-500 mr-2"></i> Outdoor Workers
+              </h4>
+              <p class="text-gray-700 text-sm mt-1">Prolonged exposure without the ability to retreat indoors increases cumulative damage.</p>
+            </div>
+            <div class="bg-white bg-opacity-70 p-3 rounded-lg shadow-xs">
+              <h4 class="font-semibold text-purple-700 flex items-center">
+                <i class="fas fa-baby text-purple-500 mr-2"></i> Pregnant Women
+              </h4>
+              <p class="text-gray-700 text-sm mt-1">Pollution can affect fetal development and increase risk of preterm birth and low birth weight.</p>
+            </div>
+            <div class="bg-white bg-opacity-70 p-3 rounded-lg shadow-xs">
+              <h4 class="font-semibold text-purple-700 flex items-center">
+                <i class="fas fa-heartbeat text-purple-500 mr-2"></i> Heart Disease Patients
+              </h4>
+              <p class="text-gray-700 text-sm mt-1">Pollution stresses the cardiovascular system, increasing risk of heart attacks and strokes.</p>
+            </div>
+          </div>
+          
+          <div class="mt-4 p-3 bg-white bg-opacity-80 rounded-lg">
+            <h4 class="font-semibold text-purple-700 flex items-center">
+              <i class="fas fa-stethoscope text-purple-500 mr-2"></i> Special Recommendations for Vulnerable Groups
+            </h4>
+            <ul class="text-gray-700 text-sm mt-2 space-y-1">
+              <li class="flex items-start"><i class="fas fa-arrow-right text-purple-400 text-xs mt-1 mr-2"></i> Consult with healthcare providers about personalized protection plans</li>
+              <li class="flex items-start"><i class="fas fa-arrow-right text-purple-400 text-xs mt-1 mr-2"></i> Consider portable air quality monitors for real-time feedback</li>
+              <li class="flex items-start"><i class="fas fa-arrow-right text-purple-400 text-xs mt-1 mr-2"></i> Create "clean air spaces" at home with enhanced filtration</li>
+              <li class="flex items-start"><i class="fas fa-arrow-right text-purple-400 text-xs mt-1 mr-2"></i> Develop action plans for high pollution days</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          <i class="fas fa-chart-bar text-blue-600 mr-2"></i> Key Statistics and Research Findings
+        </h2>
+        
+        <p>Scientific research continues to reveal the staggering impact of air pollution on respiratory health worldwide. These statistics highlight the scale of the problem and the importance of protective measures.</p>
+        
+        <div class="grid md:grid-cols-3 gap-5 mt-6">
+          <div class="stat-card bg-white p-5 rounded-xl shadow-md text-center transition duration-300 hover:shadow-lg">
+            <div class="text-4xl font-bold text-blue-600 mb-2">4.2M</div>
+            <p class="text-gray-600 text-sm">Premature deaths annually attributed to outdoor air pollution, according to the World Health Organization. This exceeds deaths from malaria, HIV/AIDS, and tuberculosis combined.</p>
+            <div class="mt-3 h-1 bg-gradient-to-r from-blue-100 to-blue-300 rounded-full"></div>
+          </div>
+          <div class="stat-card bg-white p-5 rounded-xl shadow-md text-center transition duration-300 hover:shadow-lg">
+            <div class="text-4xl font-bold text-blue-600 mb-2">91%</div>
+            <p class="text-gray-600 text-sm">Of the world's population lives in areas where air quality exceeds WHO guideline limits. Even in rural areas, pollution from wildfires and agricultural burning poses risks.</p>
+            <div class="mt-3 h-1 bg-gradient-to-r from-blue-100 to-blue-300 rounded-full"></div>
+          </div>
+          <div class="stat-card bg-white p-5 rounded-xl shadow-md text-center transition duration-300 hover:shadow-lg">
+            <div class="text-4xl font-bold text-blue-600 mb-2">30%</div>
+            <p class="text-gray-600 text-sm">Increased risk of lung cancer associated with long-term exposure to PM2.5, even after controlling for smoking and other risk factors, per multiple cohort studies.</p>
+            <div class="mt-3 h-1 bg-gradient-to-r from-blue-100 to-blue-300 rounded-full"></div>
+          </div>
+        </div>
+        
+        <div class="mt-6 grid md:grid-cols-2 gap-6">
+          <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-green-500">
+            <h4 class="font-semibold text-green-700 flex items-center">
+              <i class="fas fa-lungs text-green-500 mr-2"></i> Lung Function Impact
+            </h4>
+            <p class="text-gray-700 text-sm mt-2">A 10 μg/m³ increase in PM2.5 is associated with a 5-10% reduction in lung function growth in children, potentially leading to permanently reduced lung capacity in adulthood.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-orange-500">
+            <h4 class="font-semibold text-orange-700 flex items-center">
+              <i class="fas fa-baby-carriage text-orange-500 mr-2"></i> Childhood Asthma
+            </h4>
+            <p class="text-gray-700 text-sm mt-2">Children living near busy roads have a 40% higher risk of developing asthma compared to those in low-traffic areas, with NO₂ exposure being a major contributing factor.</p>
+          </div>
+        </div>
+      </section>
+
+     <section class="mt-12 bg-blue-50 p-6 rounded-xl border border-blue-200">
+  <h2 class="text-xl font-bold text-blue-800 mb-3">
+    <i class="fas fa-book-open text-blue-600 mr-2"></i> Further Reading and Resources
+  </h2>
+  <p class="text-gray-700 mb-4">To continue your education about air pollution and lung health, consider these authoritative resources:</p>
+  <ul class="space-y-3">
+    <li>
+      <a href="https://www.who.int/publications/i/item/9789240034228" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         class="text-blue-600 hover:text-blue-800 hover:underline flex items-start">
+        <span class="bg-blue-100 text-blue-600 rounded p-1 mr-3">
+          <i class="fas fa-external-link-alt text-sm"></i>
+        </span>
+        <span>
+          <strong>WHO Air Quality Guidelines</strong> - The latest global standards for safe air pollution levels and health-based recommendations.
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.lung.org/research/sota" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         class="text-blue-600 hover:text-blue-800 hover:underline flex items-start">
+        <span class="bg-blue-100 text-blue-600 rounded p-1 mr-3">
+          <i class="fas fa-external-link-alt text-sm"></i>
+        </span>
+        <span>
+          <strong>American Lung Association's State of the Air Report</strong> - Annual analysis of air quality trends across the United States.
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.airnow.gov" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         class="text-blue-600 hover:text-blue-800 hover:underline flex items-start">
+        <span class="bg-blue-100 text-blue-600 rounded p-1 mr-3">
+          <i class="fas fa-external-link-alt text-sm"></i>
+        </span>
+        <span>
+          <strong>EPA AirNow</strong> - Real-time air quality monitoring and forecasting for locations across North America.
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.erswhitebook.org/chapters/air-pollution-and-lung-health/" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         class="text-blue-600 hover:text-blue-800 hover:underline flex items-start">
+        <span class="bg-blue-100 text-blue-600 rounded p-1 mr-3">
+          <i class="fas fa-external-link-alt text-sm"></i>
+        </span>
+        <span>
+          <strong>ERS White Book: Air Pollution and Lung Health</strong> - Comprehensive clinical guide on pollution impacts from the European Respiratory Society.
+        </span>
+      </a>
+    </li>
+  </ul>
+</section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+          <i class="fas fa-question-circle text-indigo-600 mr-2"></i> Frequently Asked Questions
+        </h2>
+        
+        <div class="space-y-4">
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-gray-800 flex items-center">
+              <i class="fas fa-question text-indigo-500 mr-2"></i> Can the damage from air pollution be reversed?
+            </h4>
+            <p class="text-gray-700 mt-2 text-sm">Some effects are reversible, especially short-term inflammation. However, long-term exposure leading to conditions like COPD or emphysema causes permanent structural changes. The good news is that stopping exposure prevents further damage, and lung function can partially recover over time with proper care.</p>
+          </div>
+          
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-gray-800 flex items-center">
+              <i class="fas fa-question text-indigo-500 mr-2"></i> How can I tell if air pollution is affecting my lungs?
+            </h4>
+            <p class="text-gray-700 mt-2 text-sm">Warning signs include persistent cough, wheezing, shortness of breath, increased mucus production, and frequent respiratory infections. However, some damage occurs silently. If you live in a polluted area or have risk factors, consider discussing spirometry (lung function) testing with your doctor.</p>
+          </div>
+          
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-gray-800 flex items-center">
+              <i class="fas fa-question text-indigo-500 mr-2"></i> Are some times of day better for outdoor activities?
+            </h4>
+            <p class="text-gray-700 mt-2 text-sm">Generally, early morning (before rush hour) offers better air quality as pollution accumulates throughout the day. Ozone peaks in afternoon heat. However, check real-time air quality indexes as patterns vary by location and season.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mt-12 pt-8 border-t border-gray-200">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="flex space-x-4 mb-4 md:mb-0">
+            <span class="text-sm font-medium text-gray-500">Share this article:</span>
+            <!-- Twitter -->
+    <a href="https://twitter.com/intent/tweet?url=http://127.0.0.1:5000/blog/air-pollution#" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-600 transition" title="Share on Twitter">
+      <i class="fab fa-twitter text-lg"></i>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:5000/blog/air-pollution#" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition" title="Share on Facebook">
+      <i class="fab fa-facebook-f text-lg"></i>
+    </a>
+
+    <!-- Pinterest -->
+    <a href="https://pinterest.com/pin/create/button/?url=http://127.0.0.1:5000/blog/air-pollution#" target="_blank" rel="noopener noreferrer" class="text-red-500 hover:text-red-700 transition" title="Share on Pinterest">
+      <i class="fab fa-pinterest-p text-lg"></i>
+    </a>
+
+    <!-- Email -->
+    <a href="mailto:?subject=Check%20out%20this%20article&body=I%20found%20this%20interesting:%20http://127.0.0.1:5000/blog/air-pollution#" class="text-gray-600 hover:text-gray-800 transition" title="Share via Email">
+      <i class="fas fa-envelope text-lg"></i>
+    </a>
+          </div>
+          <a href="http://localhost:3000/#blog" class="text-blue-600 font-medium inline-flex items-center hover:text-blue-800 transition">
+            <i class="fas fa-arrow-left mr-2"></i> Back to All Articles
+          </a>
+        </div>
+        <div class="mt-6 text-center text-sm text-gray-500">
+          <p>© 2023 LungCare. All rights reserved. | Medical review by Dr. Sarah Johnson, Pulmonologist</p>
+        </div>
+      </footer>
+    </div>
+  </article>
+</main>
+
+<!-- Footer -->
+  <footer class="bg-blue-700 text-white py-2 mt-8">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <h3 class="text-md font-semibold mb-3">Lung Care</h3>
+          <p class="text-blue-100 text-sm">Providing reliable information about lung health and respiratory diseases.</p>
+        </div>
+        <div>
+          <h3 class="text-md font-semibold mb-3">Quick Links</h3>
+          <ul class="space-y-1 text-sm">
+            <li><a href="http://localhost:3000/" class="text-blue-100 hover:text-white transition-colors">Home</a></li>
+            <li><a href="/diseases/pneumonia" class="text-blue-100 hover:text-white transition-colors">Pneumonia</a></li>
+            <li><a href="/diseases/asthma" class="text-blue-100 hover:text-white transition-colors">Asthma</a></li>
+            <li><a href="/diseases/copd" class="text-blue-100 hover:text-white transition-colors">COPD</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-md font-semibold mb-3">Contact</h3>
+          <p class="text-blue-100 text-sm">For medical emergencies, call your local emergency number immediately.</p>
+        </div>
+      </div>
+      <div class="border-t border-blue-600 mt-6 pt-4 text-center text-blue-100 text-sm">
+        <p>© 2025 Lung Care. All information is for educational purposes only.</p>
+      </div>
+    </div>
+  </footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  // Back to top button functionality
+  const backToTopButton = document.getElementById('backToTop');
+  
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.remove('opacity-0', 'invisible');
+      backToTopButton.classList.add('opacity-100', 'visible');
+    } else {
+      backToTopButton.classList.remove('opacity-100', 'visible');
+      backToTopButton.classList.add('opacity-0', 'invisible');
+    }
+  });
+  
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pulmonary Fibrosis - Lung Care</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <!-- Add Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f9fafb;
+      line-height: 1.6;
+      font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .prose h2 {
+      color: #1d4ed8;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+    }
+
+    .emoji {
+      margin-right: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      transition: all 0.3s ease;
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.375rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: white !important;
+      display: flex;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .active-nav {
+      background-color: rgba(255, 255, 255, 0.3);
+      font-weight: 600;
+    }
+
+    .symptom-card {
+      transition: all 0.3s ease;
+      border-left: 4px solid #1d4ed8;
+    }
+
+    .symptom-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background-color: #1d4ed8;
+      color: white;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      font-size: 0.875rem;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      background-color: #1e40af;
+    }
+    
+    /* Improved typography */
+    .text-gray-700 {
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    
+    .prose-lg p {
+      font-size: 1.125rem;
+    }
+    
+    .text-lg {
+      font-size: 1.125rem;
+      line-height: 1.75;
+    }
+    
+    h1 {
+      letter-spacing: -0.05em;
+      line-height: 1.2;
+    }
+
+    /* Hero section */
+.hero {
+  background: linear-gradient(to right, #e0f2fe, #f8fafc);
+  padding: 2rem 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+/* Image container */
+.image-card {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+.image-card:hover {
+  transform: translateY(-6px);
+}
+
+.image-card img {
+  max-width: 480px;
+}
+  </style>
+</head>
+<body class="text-gray-800 font-sans">
+
+  <!-- Chatbot Widget (Small Box, Left Bottom Corner, Clean Border & Shadow) -->
+<div id="chatbot-widget" style="
+  position: fixed;
+  bottom: 20px;
+  left:-20px;
+  width: 300px;
+  height: 420px;
+  z-index: 9999;
+  border-radius: 0px;
+  overflow: hidden;
+  background-color:transparent;
+">
+  <iframe
+    src="http://localhost:3000/chatbot-widget"
+    width="100%"
+    height="100%"
+    frameborder="0"
+    style="border: none;"
+  ></iframe>
+</div>
+
+<!-- 🔷 Navigation -->
+<nav class="bg-blue-700 text-white w-full py-2 shadow-md sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 h-14">
+    <!-- Logo -->
+    <a href="http://localhost:3000/" class="flex items-center gap-2 text-white text-lg font-bold">
+      <i class="fas fa-lungs text-white text-xl"></i>
+      <span class="font-bold">Lung Care</span>
+    </a>
+
+    <!-- Links -->
+<ul class="flex items-center gap-6 text-base font-medium">
+  <li>
+    <a href="http://localhost:3000" class="nav-link flex items-center">
+      <i class="fas fa-home mr-1"></i>Home
+    </a>
+  </li>
+  <li><a href="/diseases/pneumonia" class="nav-link">Pneumonia</a></li>
+  <li><a href="/diseases/asthma" class="nav-link">Asthma</a></li>
+  <li><a href="/diseases/copd" class="nav-link">COPD</a></li>
+  <li><a href="/diseases/lung-cancer" class="nav-link">Lung Cancer</a></li>
+  <li><a href="/diseases/pulmonary-fibrosis" class="nav-link active-nav">Pulmonary Fibrosis</a></li>
+  <li><a href="/diseases/covid-19" class="nav-link">COVID-19</a></li>
+</ul>
+</div>
+</nav>
+
+  <!-- 📖 Content -->
+  <main class="max-w-5xl mx-auto px-6 py-8">
+  <div class="hero text-center" data-aos="fade-down">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-blue-700 mb-4 flex justify-center items-center gap-2">
+      <i class="fas fa-lungs text-blue-600 text-3xl md:text-4xl"></i> Pulmonary Fibrosis
+    </h1>
+    <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+      Understanding pulmonary fibrosis: symptoms, causes, and management of this chronic lung scarring condition.
+    </p>
+  </div>
+
+ <!-- ✅ Image with centered title -->
+<div class="image-card mt-10 mb-6" data-aos="zoom-in">
+  <div class="flex flex-col items-center">
+    <h2 class="text-xl font-semibold text-gray-700 mb-4 text-center">
+      Comparison of Healthy Lungs vs. Fibrotic Lungs
+    </h2>
+    <img src="{{ url_for('static', filename='pulmonary-fibrosis.jpg') }}"
+         alt="Pulmonary Fibrosis Diagram"
+         class="rounded-xl w-full max-w-xl shadow-lg border-4 border-white" />
+  </div>
+</div>
+
+
+  <article class="prose lg:prose-lg mt-8" data-aos="fade-up">
+    <section>
+        <h2><span class="emoji">🧬</span> Introduction</h2>
+        <p class="text-gray-700">
+          Pulmonary fibrosis is a chronic, progressive lung disease where lung tissue becomes damaged and scarred, making it increasingly difficult to breathe. 
+          The thickened, stiff tissue makes it harder for oxygen to pass into the bloodstream. Idiopathic pulmonary fibrosis (IPF) is the most common type, 
+          meaning the cause is unknown. The disease typically worsens over time, though progression varies between individuals.
+        </p>
+      </section>
+
+      <section class="mt-8">
+        <h2><span class="emoji">🫁</span> How It Affects the Lungs</h2>
+        <p class="text-gray-700">
+          In pulmonary fibrosis, the delicate air sacs (alveoli) and lung tissue become thickened and scarred (fibrotic). This scarring:
+          <ul class="list-disc pl-5 mt-2 text-gray-700">
+            <li>Reduces lung elasticity and capacity</li>
+            <li>Creates a honeycomb-like appearance on imaging</li>
+            <li>Impairs oxygen transfer to the bloodstream</li>
+            <li>Leads to progressive respiratory failure</li>
+          </ul>
+        </p>
+        <div class="bg-blue-50 p-4 rounded-lg mt-4 border-l-4 border-blue-500">
+          <p class="text-blue-800 font-medium"><i class="fas fa-info-circle mr-2"></i>Did you know? Pulmonary fibrosis affects about 100,000 people in the U.S., with 30,000-40,000 new cases diagnosed annually.</p>
+        </div>
+      </section>
+
+      <section class="mt-8">
+        <h2><span class="emoji">🔵</span> Symptoms</h2>
+        <div class="grid md:grid-cols-2 gap-4 mt-6">
+          <div class="symptom-card bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-wind mr-2"></i>Shortness of Breath</h3>
+            <p class="text-gray-700">Progressive difficulty breathing (dyspnea)</p>
+          </div>
+          <div class="symptom-card bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-cough mr-2"></i>Dry Cough</h3>
+            <p class="text-gray-700">Persistent, hacking cough without mucus</p>
+          </div>
+          <div class="symptom-card bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-tired mr-2"></i>Fatigue</h3>
+            <p class="text-gray-700">Persistent tiredness and weakness</p>
+          </div>
+          <div class="symptom-card bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-weight mr-2"></i>Weight Loss</h3>
+            <p class="text-gray-700">Unexplained loss of appetite and weight</p>
+          </div>
+          <div class="symptom-card bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-bone mr-2"></i>Muscle/Joint Pain</h3>
+            <p class="text-gray-700">Aching in muscles and joints</p>
+          </div>
+          <div class="symptom-card bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-fingerprint mr-2"></i>Clubbing</h3>
+            <p class="text-gray-700">Widening and rounding of fingertips/nails</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-8">
+        <h2><span class="emoji">🧪</span> Causes & Risk Factors</h2>
+        <p class="text-gray-700">Potential causes and contributing factors:</p>
+        <div class="grid gap-4 mt-4">
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-question mr-2"></i>Idiopathic</h3>
+            <p class="text-gray-700">No known cause (IPF - Idiopathic Pulmonary Fibrosis)</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-industry mr-2"></i>Environmental</h3>
+            <p class="text-gray-700">Long-term exposure to toxins (silica, asbestos, coal dust)</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-radiation mr-2"></i>Radiation</h3>
+            <p class="text-gray-700">Radiation therapy to the chest</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-pills mr-2"></i>Medications</h3>
+            <p class="text-gray-700">Certain chemotherapy drugs, heart medications</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-disease mr-2"></i>Autoimmune</h3>
+            <p class="text-gray-700">Rheumatoid arthritis, scleroderma, sarcoidosis</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-blue-700"><i class="fas fa-dna mr-2"></i>Genetic</h3>
+            <p class="text-gray-700">Family history increases risk</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-8">
+        <h2><span class="emoji">🛡️</span> Management & Treatment</h2>
+        <div class="grid md:grid-cols-2 gap-6 mt-6">
+          <div class="bg-blue-50 p-5 rounded-lg">
+            <h3 class="font-semibold text-blue-700 flex items-center">
+              <i class="fas fa-prescription-bottle-alt mr-2"></i> Medications
+            </h3>
+            <ul class="mt-2 space-y-2 text-gray-700">
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Antifibrotic drugs (nintedanib, pirfenidone)</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Corticosteroids for inflammation</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Acid reflux medications</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Oxygen therapy as needed</li>
+            </ul>
+          </div>
+          <div class="bg-blue-50 p-5 rounded-lg">
+            <h3 class="font-semibold text-blue-700 flex items-center">
+              <i class="fas fa-procedures mr-2"></i> Therapies
+            </h3>
+            <ul class="mt-2 space-y-2 text-gray-700">
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Pulmonary rehabilitation</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Supplemental oxygen</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Lung transplant evaluation</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Vaccinations (pneumonia, flu)</li>
+            </ul>
+          </div>
+          <div class="bg-blue-50 p-5 rounded-lg">
+            <h3 class="font-semibold text-blue-700 flex items-center">
+              <i class="fas fa-heartbeat mr-2"></i> Lifestyle
+            </h3>
+            <ul class="mt-2 space-y-2 text-gray-700">
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Smoking cessation (critical)</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Regular gentle exercise</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Healthy, nutrient-rich diet</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Breathing techniques</li>
+            </ul>
+          </div>
+          <div class="bg-blue-50 p-5 rounded-lg">
+            <h3 class="font-semibold text-blue-700 flex items-center">
+              <i class="fas fa-user-shield mr-2"></i> Prevention
+            </h3>
+            <ul class="mt-2 space-y-2 text-gray-700">
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Avoid smoking and secondhand smoke</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Protective equipment for hazardous jobs</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Manage autoimmune conditions</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Regular medical checkups if at risk</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-8">
+        <h2><span class="emoji">🏥</span> When to Seek Medical Care</h2>
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg mt-4">
+          <p class="text-red-800 font-medium"><i class="fas fa-exclamation-triangle mr-2"></i>Seek immediate medical attention for:</p>
+          <ul class="mt-2 space-y-2 text-red-700">
+            <li class="flex items-start"><i class="fas fa-arrow-right text-red-500 mt-1 mr-2"></i> Sudden worsening of breathing</li>
+            <li class="flex items-start"><i class="fas fa-arrow-right text-red-500 mt-1 mr-2"></i> Blue lips or fingernails (cyanosis)</li>
+            <li class="flex items-start"><i class="fas fa-arrow-right text-red-500 mt-1 mr-2"></i> Extreme fatigue or confusion</li>
+            <li class="flex items-start"><i class="fas fa-arrow-right text-red-500 mt-1 mr-2"></i> Rapid, shallow breathing</li>
+            <li class="flex items-start"><i class="fas fa-arrow-right text-red-500 mt-1 mr-2"></i> Chest pain or pressure</li>
+          </ul>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-700 text-white py-2 mt-8">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <h3 class="text-md font-semibold mb-3">Lung Care</h3>
+          <p class="text-blue-100 text-sm">Providing reliable information about lung health and respiratory diseases.</p>
+        </div>
+        <div>
+          <h3 class="text-md font-semibold mb-3">Quick Links</h3>
+          <ul class="space-y-1 text-sm">
+            <li><a href="http://localhost:3000/" class="text-blue-100 hover:text-white transition-colors">Home</a></li>
+            <li><a href="/diseases/pneumonia" class="text-blue-100 hover:text-white transition-colors">Pneumonia</a></li>
+            <li><a href="/diseases/asthma" class="text-blue-100 hover:text-white transition-colors">Asthma</a></li>
+            <li><a href="/diseases/copd" class="text-blue-100 hover:text-white transition-colors">COPD</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-md font-semibold mb-3">Contact</h3>
+          <p class="text-blue-100 text-sm">For medical emergencies, call your local emergency number immediately.</p>
+        </div>
+      </div>
+      <div class="border-t border-blue-600 mt-6 pt-4 text-center text-blue-100 text-sm">
+        <p>© 2025 Lung Care. All information is for educational purposes only.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <a href="#" class="back-to-top hidden" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- 📜 Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init();
+    
+    // Back to top button
+    const backToTopButton = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('hidden');
+      } else {
+        backToTopButton.classList.add('hidden');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

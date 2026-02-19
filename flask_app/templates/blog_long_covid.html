@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding Long COVID and Lung Recovery | Lung Care</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      font-family: 'Roboto', sans-serif;
+    }
+    .prose a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .prose a:hover {
+      text-decoration: underline;
+    }
+    .image-card {
+      transition: transform 0.3s ease;
+    }
+    .image-card:hover {
+      transform: scale(1.01);
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    .article-content p {
+      margin-bottom: 1.25rem;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-left: 4px solid #3b82f6;
+    }
+  </style>
+</head>
+<body class="text-gray-800 bg-gray-50">
+
+  <!-- Chatbot Widget (Small Box, Left Bottom Corner, Clean Border & Shadow) -->
+<div id="chatbot-widget" style="
+  position: fixed;
+  bottom: 20px;
+  left:-20px;
+  width: 300px;
+  height: 420px;
+  z-index: 9999;
+  border-radius: 0px;
+  overflow: hidden;
+  background-color:transparent;
+">
+  <iframe
+    src="http://localhost:3000/chatbot-widget"
+    width="100%"
+    height="100%"
+    frameborder="0"
+    style="border: none;"
+  ></iframe>
+</div>
+
+<!-- Navigation -->
+<nav class="bg-gradient-to-r from-blue-600 to-blue-800 text-white w-full py-3 shadow-lg sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+    <a href="http://localhost:3000/" class="text-xl font-bold flex items-center">
+      <i class="fas fa-lungs mr-2"></i> LungCare
+    </a>
+    
+    <div class="hidden md:flex space-x-6">
+      <!-- Home Link -->
+      <a href="http://localhost:3000/" class="hover:text-blue-200 transition flex items-center">
+        Home
+      </a>
+      
+      <!-- Articles Dropdown -->
+      <div class="relative group">
+        <button class="hover:text-blue-200 transition flex items-center">
+          Articles <i class="fas fa-chevron-down ml-1 text-xs"></i>
+        </button>
+        <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-1 w-64 z-50">
+          <a href="http://127.0.0.1:5000/blog/air-pollution" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">How Air Pollution Affects Your Lungs</a>
+          <a href="http://127.0.0.1:5000/blog/asthma-vs-copd" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Difference Between Asthma and COPD</a>
+          <a href="http://127.0.0.1:5000/blog/lung-function" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Foods That Improve Lung Function</a>
+          <a href="http://127.0.0.1:5000/blog/smoking-impact" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">The Impact of Smoking on Young Adults</a>
+          <a href="http://127.0.0.1:5000/blog/breathing-exercises" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Breathing Exercises for Better Lung Capacity</a>
+          <a href="http://127.0.0.1:5000/blog/long-covid" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Understanding Long COVID and Lung Recovery</a>
+        </div>
+      </div>
+      
+      <!-- Diseases Dropdown -->
+      <div class="relative group">
+        <button class="hover:text-blue-200 transition flex items-center">
+          Diseases <i class="fas fa-chevron-down ml-1 text-xs"></i>
+        </button>
+        <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-1 w-64 z-50">
+          <a href="http://localhost:5000/diseases/pneumonia" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Pneumonia</a>
+          <a href="http://localhost:5000/diseases/lung-cancer" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Lung Cancer</a>
+          <a href="http://localhost:5000/diseases/asthma" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Asthma</a>
+          <a href="http://localhost:5000/diseases/pulmonary-fibrosis" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Pulmonary Fibrosis</a>
+          <a href="http://localhost:5000/diseases/copd" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">COPD</a>
+          <a href="http://localhost:5000/diseases/covid-19" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">COVID-19</a>
+        </div>
+      </div>
+      
+      <!-- AI Tools Dropdown -->
+      <div class="relative group">
+        <button class="hover:text-blue-200 transition flex items-center">
+          AI Tools <i class="fas fa-chevron-down ml-1 text-xs"></i>
+        </button>
+        <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-1 w-64 z-50">
+          <a href="http://localhost:3000/xray" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">X-ray Pneumonia Detection</a>
+          <a href="http://localhost:3000/lung-cancer-predictor" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Lung Cancer Risk</a>
+          <a href="http://localhost:3000/symptom-checker" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Symptom Checker</a>
+          <a href="http://localhost:3000/air-quality" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Air Quality Checker</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu button -->
+    <button class="md:hidden text-xl">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- Blog Content -->
+<main class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+  <article class="prose lg:prose-xl">
+    <!-- Article Header -->
+    <header class="mb-12 text-center">
+      <div class="inline-block px-4 py-2 mb-4 text-sm font-semibold text-teal-700 bg-teal-100 rounded-full uppercase tracking-wider">
+        POST-COVID RECOVERY
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+        Understanding Long COVID and <span class="text-teal-600">Lung Recovery</span>
+      </h1>
+      <div class="flex justify-center items-center text-gray-500 text-sm">
+        <span class="mr-4"><i class="far fa-calendar-alt mr-1"></i> October 12, 2023</span>
+        <span><i class="far fa-clock mr-1"></i> 8 min read</span>
+      </div>
+    </header>
+
+    <!-- Featured Image -->
+    <div class="image-card my-8 rounded-xl overflow-hidden shadow-xl">
+      <img src="/static/long-covid.jpg" 
+           alt="Person recovering from long COVID with medical professional"
+           class="w-full h-64 md:h-96 object-cover">
+      <p class="text-center text-sm text-gray-500 mt-2 italic">Long COVID affects multiple systems in the body, with lung complications being among the most common</p>
+    </div>
+
+    <!-- Article Content -->
+    <div class="article-content">
+      <section>
+        <div class="highlight-box rounded-r-lg pl-6 pr-4 py-4 mb-8">
+          <p class="text-lg md:text-xl font-medium text-gray-700">
+            Long COVID, or Post-Acute Sequelae of SARS-CoV-2 infection (PASC), affects an estimated 10-30% of COVID-19 survivors, with lingering symptoms that persist for weeks or months after initial infection. Lung damage and respiratory symptoms are among the most common and debilitating manifestations, including persistent shortness of breath, reduced exercise capacity, and abnormal lung function tests that can last for a year or more.
+          </p>
+        </div>
+        
+        <p>While most people recover from COVID-19 within a few weeks, a significant portion experience prolonged symptoms that can impact quality of life and daily functioning. The respiratory system is particularly vulnerable, with studies showing that even mild COVID-19 cases can result in measurable lung function abnormalities. Understanding these effects and implementing targeted recovery strategies can significantly improve outcomes.</p>
+      </section>
+
+      <section class="mt-10">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+          <i class="fas fa-lungs text-teal-500 mr-2"></i> Common Respiratory Symptoms of Long COVID
+        </h2>
+        
+        <p>Patients with long COVID frequently report these persistent respiratory symptoms:</p>
+        
+        <div class="grid md:grid-cols-2 gap-4 my-6">
+          <div class="bg-white p-4 rounded-lg shadow-md border-t-4 border-teal-500">
+            <h3 class="font-semibold text-teal-600 flex items-center">
+              <i class="fas fa-wind mr-2"></i> Breathing Difficulties
+            </h3>
+            <ul class="text-gray-600 mt-2 space-y-1">
+              <li class="flex items-start"><i class="fas fa-check-circle text-teal-400 mr-2 mt-1 text-xs"></i> Persistent shortness of breath (dyspnea)</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-teal-400 mr-2 mt-1 text-xs"></i> Feeling of "air hunger" or unsatisfying breaths</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-teal-400 mr-2 mt-1 text-xs"></i> Exercise intolerance and reduced stamina</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-teal-400 mr-2 mt-1 text-xs"></i> Need for deeper, more frequent breaths</li>
+            </ul>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-md border-t-4 border-blue-500">
+            <h3 class="font-semibold text-blue-600 flex items-center">
+              <i class="fas fa-head-side-cough mr-2"></i> Cough & Chest Symptoms
+            </h3>
+            <ul class="text-gray-600 mt-2 space-y-1">
+              <li class="flex items-start"><i class="fas fa-check-circle text-blue-400 mr-2 mt-1 text-xs"></i> Chronic dry or productive cough</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-blue-400 mr-2 mt-1 text-xs"></i> Chest tightness or discomfort</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-blue-400 mr-2 mt-1 text-xs"></i> Pain with deep breathing (pleuritic pain)</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-blue-400 mr-2 mt-1 text-xs"></i> Increased mucus production</li>
+            </ul>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-md border-t-4 border-purple-500">
+            <h3 class="font-semibold text-purple-600 flex items-center">
+              <i class="fas fa-heartbeat mr-2"></i> Oxygenation Issues
+            </h3>
+            <ul class="text-gray-600 mt-2 space-y-1">
+              <li class="flex items-start"><i class="fas fa-check-circle text-purple-400 mr-2 mt-1 text-xs"></i> Lower than normal oxygen saturation</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-purple-400 mr-2 mt-1 text-xs"></i> Post-exertional oxygen desaturation</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-purple-400 mr-2 mt-1 text-xs"></i> Difficulty breathing when lying flat</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-purple-400 mr-2 mt-1 text-xs"></i> Increased respiratory rate at rest</li>
+            </ul>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-md border-t-4 border-orange-500">
+            <h3 class="font-semibold text-orange-600 flex items-center">
+              <i class="fas fa-running mr-2"></i> Exercise Limitations
+            </h3>
+            <ul class="text-gray-600 mt-2 space-y-1">
+              <li class="flex items-start"><i class="fas fa-check-circle text-orange-400 mr-2 mt-1 text-xs"></i> Reduced exercise capacity</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-orange-400 mr-2 mt-1 text-xs"></i> Prolonged recovery after physical activity</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-orange-400 mr-2 mt-1 text-xs"></i> Post-exertional malaise (PEM)</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-orange-400 mr-2 mt-1 text-xs"></i> Abnormal heart rate response to activity</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          <i class="fas fa-microscope text-teal-500 mr-2"></i> Underlying Lung Damage in Long COVID
+        </h2>
+        
+        <p>Research has identified several types of lung abnormalities that contribute to persistent symptoms:</p>
+        
+        <div class="grid md:grid-cols-2 gap-6 mt-8">
+          <div class="bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-xl shadow-md border-l-4 border-teal-500 transition duration-300 hover:shadow-lg">
+            <h3 class="font-semibold text-teal-700 text-xl flex items-center">
+              <i class="fas fa-lungs mr-2"></i> Structural Changes
+            </h3>
+            <p class="mt-3 text-gray-700">Imaging studies reveal lasting damage to lung tissue:</p>
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-start">
+                <span class="bg-teal-100 text-teal-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700"><strong>Ground-glass opacities:</strong> Hazy lung areas visible on CT scans (present in 60% of patients 3 months post-infection)</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-teal-100 text-teal-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700"><strong>Pulmonary fibrosis:</strong> Scarring of lung tissue in severe cases</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-teal-100 text-teal-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700"><strong>Vascular changes:</strong> Abnormal blood vessel formation (microangiopathy)</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-md border-l-4 border-blue-500 transition duration-300 hover:shadow-lg">
+            <h3 class="font-semibold text-blue-700 text-xl flex items-center">
+              <i class="fas fa-vial mr-2"></i> Functional Impairments
+            </h3>
+            <p class="mt-3 text-gray-700">Lung function tests show measurable abnormalities:</p>
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-start">
+                <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700"><strong>Reduced diffusion capacity:</strong> Impaired oxygen transfer (DLCO <80% in 30-40% of patients at 6 months)</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700"><strong>Restrictive pattern:</strong> Reduced lung volumes (FVC <80% predicted)</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-blue-100 text-blue-600 rounded-full p-1 mr-3">
+                  <i class="fas fa-check-circle text-xs"></i>
+                </span>
+                <span class="text-gray-700"><strong>Small airway disease:</strong> Peripheral airway obstruction</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          <i class="fas fa-chart-line text-teal-500 mr-2"></i> Recovery Timeline and Statistics
+        </h2>
+        
+        <p>Most patients see gradual improvement, but recovery varies significantly:</p>
+        
+        <div class="grid md:grid-cols-3 gap-5 mt-6">
+          <div class="stat-card bg-white p-5 rounded-xl shadow-md text-center transition duration-300 hover:shadow-lg">
+            <div class="text-4xl font-bold text-teal-600 mb-2">3-6 mo</div>
+            <p class="text-gray-600 text-sm">Average time for significant improvement in lung function for mild-moderate cases (European Respiratory Journal)</p>
+            <div class="mt-3 h-1 bg-gradient-to-r from-teal-100 to-teal-300 rounded-full"></div>
+          </div>
+          <div class="stat-card bg-white p-5 rounded-xl shadow-md text-center transition duration-300 hover:shadow-lg">
+            <div class="text-4xl font-bold text-teal-600 mb-2">12-18 mo</div>
+            <p class="text-gray-600 text-sm">Recovery period for severe COVID-19 patients requiring hospitalization (Lancet Respiratory Medicine)</p>
+            <div class="mt-3 h-1 bg-gradient-to-r from-teal-100 to-teal-300 rounded-full"></div>
+          </div>
+          <div class="stat-card bg-white p-5 rounded-xl shadow-md text-center transition duration-300 hover:shadow-lg">
+            <div class="text-4xl font-bold text-teal-600 mb-2">10-30%</div>
+            <p class="text-gray-600 text-sm">Patients with persistent symptoms beyond 12 weeks (WHO estimates)</p>
+            <div class="mt-3 h-1 bg-gradient-to-r from-teal-100 to-teal-300 rounded-full"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          <i class="fas fa-heartbeat text-teal-500 mr-2"></i> Rehabilitation Strategies
+        </h2>
+        
+        <p>A multidisciplinary approach yields the best results for lung recovery:</p>
+        
+        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-1/2">
+              <h3 class="font-semibold text-teal-700 text-lg mb-3">Breathing Exercises</h3>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Diaphragmatic breathing:</strong> Strengthens the diaphragm and improves oxygen efficiency</li>
+                <li><strong>Pursed-lip breathing:</strong> Helps keep airways open longer during exhalation</li>
+                <li><strong>Segmental breathing:</strong> Targets specific areas of the lungs to improve ventilation</li>
+                <li><strong>Incentive spirometry:</strong> Uses devices to encourage deep, sustained breaths</li>
+              </ul>
+            </div>
+            <div class="md:w-1/2">
+              <h3 class="font-semibold text-teal-700 text-lg mb-3">Gradual Exercise Program</h3>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Pacing strategy:</strong> Alternating activity with rest to avoid overexertion</li>
+                <li><strong>Interval training:</strong> Short bursts of activity with recovery periods</li>
+                <li><strong>Monitoring:</strong> Using pulse oximeters and heart rate monitors to stay in safe zones</li>
+                <li><strong>Strength training:</strong> Focus on respiratory and core muscles</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="mt-6 bg-blue-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-blue-700 flex items-center">
+              <i class="fas fa-notes-medical mr-2"></i> Medical Interventions
+            </h4>
+            <p class="text-gray-700 mt-2 text-sm">For persistent cases: pulmonary rehabilitation programs, supplemental oxygen (if needed), bronchodilators for airway hyperreactivity, anti-inflammatory medications, and in severe fibrosis cases, antifibrotic drugs. Always consult a pulmonologist for personalized treatment plans.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12 bg-blue-50 p-6 rounded-xl border border-blue-200">
+        <h2 class="text-xl font-bold text-blue-800 mb-3">
+          <i class="fas fa-book-open text-blue-600 mr-2"></i> Further Resources
+        </h2>
+        <ul class="space-y-3">
+          <li>
+            <a href="https://www.cdc.gov/coronavirus/2019-ncov/long-term-effects/index.html" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-blue-600 hover:text-blue-800 hover:underline flex items-start">
+              <span class="bg-blue-100 text-blue-600 rounded p-1 mr-3">
+                <i class="fas fa-external-link-alt text-sm"></i>
+              </span>
+              <span>
+                <strong>CDC: Long COVID Information</strong> - Official guidelines and research
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.lung.org/lung-health-diseases/lung-disease-lookup/covid-19/post-covid-recovery" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-blue-600 hover:text-blue-800 hover:underline flex items-start">
+              <span class="bg-blue-100 text-blue-600 rounded p-1 mr-3">
+                <i class="fas fa-external-link-alt text-sm"></i>
+              </span>
+              <span>
+                <strong>American Lung Association</strong> - Post-COVID recovery resources
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/coronavirus-disease-(covid-19)-post-covid-19-condition" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-blue-600 hover:text-blue-800 hover:underline flex items-start">
+              <span class="bg-blue-100 text-blue-600 rounded p-1 mr-3">
+                <i class="fas fa-external-link-alt text-sm"></i>
+              </span>
+              <span>
+                <strong>WHO: Post COVID-19 Condition</strong> - Global research and data
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+          <i class="fas fa-question-circle text-indigo-600 mr-2"></i> Frequently Asked Questions
+        </h2>
+        
+        <div class="space-y-4">
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-gray-800 flex items-center">
+              <i class="fas fa-question text-indigo-500 mr-2"></i> How long does lung damage from COVID last?
+            </h4>
+            <p class="text-gray-700 mt-2 text-sm">Most patients see gradual improvement over 3-6 months, but some may take a year or longer. Severe cases with fibrosis may have permanent changes. Regular follow-up with pulmonary function tests helps track recovery progress.</p>
+          </div>
+          
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-gray-800 flex items-center">
+              <i class="fas fa-question text-indigo-500 mr-2"></i> Can mild COVID cause long-term lung problems?
+            </h4>
+            <p class="text-gray-700 mt-2 text-sm">Yes. Even mild cases can result in persistent symptoms and measurable lung function abnormalities. A 2022 study found 15% of non-hospitalized patients had reduced diffusion capacity at 12 months post-infection.</p>
+          </div>
+          
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-gray-800 flex items-center">
+              <i class="fas fa-question text-indigo-500 mr-2"></i> When should I see a doctor about post-COVID breathing problems?
+            </h4>
+            <p class="text-gray-700 mt-2 text-sm">Seek evaluation if symptoms persist beyond 4 weeks, worsen over time, or significantly impact daily activities. Red flags include oxygen saturation below 92%, chest pain, coughing blood, or sudden worsening of symptoms.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mt-12 pt-8 border-t border-gray-200">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="flex space-x-4 mb-4 md:mb-0">
+            <span class="text-sm font-medium text-gray-500">Share this article:</span>
+            <a href="https://twitter.com/intent/tweet?url=http://127.0.0.1:5000/blog/long-covid&text=Understanding%20Long%20COVID%20and%20Lung%20Recovery" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-blue-400 hover:text-blue-600 transition" 
+               title="Share on Twitter">
+              <i class="fab fa-twitter text-lg"></i>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:5000/blog/long-covid" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-blue-600 hover:text-blue-800 transition" 
+               title="Share on Facebook">
+              <i class="fab fa-facebook-f text-lg"></i>
+            </a>
+            <a href="https://pinterest.com/pin/create/button/?url=http://127.0.0.1:5000/blog/long-covid&media=&description=Understanding%20Long%20COVID%20and%20Lung%20Recovery" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="text-red-500 hover:text-red-700 transition" 
+               title="Share on Pinterest">
+              <i class="fab fa-pinterest-p text-lg"></i>
+            </a>
+          </div>
+          <a href="http://localhost:3000/#blog" class="text-blue-600 font-medium inline-flex items-center hover:text-blue-800 transition">
+            <i class="fas fa-arrow-left mr-2"></i> Back to All Articles
+          </a>
+        </div>
+        <div class="mt-6 text-center text-sm text-gray-500">
+          <p>© 2023 LungCare. All rights reserved. | Medical review by Dr. Jonathan Park, Pulmonologist</p>
+        </div>
+      </footer>
+    </div>
+  </article>
+</main>
+
+<!-- Footer -->
+  <footer class="bg-blue-700 text-white py-2 mt-8">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <h3 class="text-md font-semibold mb-3">Lung Care</h3>
+          <p class="text-blue-100 text-sm">Providing reliable information about lung health and respiratory diseases.</p>
+        </div>
+        <div>
+          <h3 class="text-md font-semibold mb-3">Quick Links</h3>
+          <ul class="space-y-1 text-sm">
+            <li><a href="http://localhost:3000/" class="text-blue-100 hover:text-white transition-colors">Home</a></li>
+            <li><a href="/diseases/pneumonia" class="text-blue-100 hover:text-white transition-colors">Pneumonia</a></li>
+            <li><a href="/diseases/asthma" class="text-blue-100 hover:text-white transition-colors">Asthma</a></li>
+            <li><a href="/diseases/copd" class="text-blue-100 hover:text-white transition-colors">COPD</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-md font-semibold mb-3">Contact</h3>
+          <p class="text-blue-100 text-sm">For medical emergencies, call your local emergency number immediately.</p>
+        </div>
+      </div>
+      <div class="border-t border-blue-600 mt-6 pt-4 text-center text-blue-100 text-sm">
+        <p>© 2025 Lung Care. All information is for educational purposes only.</p>
+      </div>
+    </div>
+  </footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  // Back to top button functionality
+  const backToTopButton = document.getElementById('backToTop');
+  
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.remove('opacity-0', 'invisible');
+      backToTopButton.classList.add('opacity-100', 'visible');
+    } else {
+      backToTopButton.classList.remove('opacity-100', 'visible');
+      backToTopButton.classList.add('opacity-0', 'invisible');
+    }
+  });
+  
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# React
+node_modules/
+build/
+
+# Models
+*.h5
+*.keras
+*.pkl
+
+# Uploads
+uploads/
+
+# Environment
+.env
+flask_app/.env
+
+# OS
+.DS_Store
+Thumbs.db
