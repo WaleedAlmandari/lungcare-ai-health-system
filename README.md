@@ -62,7 +62,7 @@ lungcare-ai-health-system/
 
 ### 1️⃣ Clone the Repository
 
-```bash
+
 git clone https://github.com/WaleedAlmandari/lungcare-ai-health-system.git
 cd lungcare-ai-health-system
 2️⃣ Backend Setup (Flask)
